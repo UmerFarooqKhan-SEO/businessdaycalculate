@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Date Difference Calculator - Years, Months & Days</title>
+
+  <meta name="description" content="Free date difference calculator. Calculate the exact difference between two dates in years, months, weeks and days.">
+
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Umer Farooq Khan">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="canonical" href="https://umerfarooqkhan-seo.github.io/businessdaycalculate/date-difference.html">
+
+  <meta property="og:title" content="Date Difference Calculator">
+  <meta property="og:description" content="Calculate the exact difference between two dates in years, months and days.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://umerfarooqkhan-seo.github.io/businessdaycalculate/date-difference.html">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Date Difference Calculator">
+  <meta name="twitter:description" content="Calculate the difference between two dates in years, months and days.">
+
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="stylesheet" href="style.css">
+
+
+  <!-- WebApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Date Difference Calculator",
+    "url": "https://umerfarooqkhan-seo.github.io/businessdaycalculate/date-difference.html",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "description": "A free calculator for finding the difference between two dates in years, months and days.",
+    "author": {
+      "@type": "Person",
+      "name": "Umer Farooq Khan"
+    }
+  }
+  </script>
+
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I calculate the difference between two dates?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enter a start date and an end date. The calculator shows the difference in years, months and days, along with total days and weeks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can this calculator calculate years, months and days?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The calculator provides a calendar-based difference in years, months and days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the calculator include the start date?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The exact date difference is calculated from the start date to the end date. The total calendar-day count represents the elapsed days between the dates."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I calculate the difference between dates in the past?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can enter dates from the past or future as long as the start date comes before the end date."
+        }
+      }
+    ]
+  }
+  </script>
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+  <div class="container header-inner">
+
+    <a href="index.html" class="logo">
+      Business Day Calculate
+    </a>
+
+    <nav>
+      <a href="index.html">Calculator</a>
+      <a href="index.html#how-it-works">How It Works</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<main>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="container">
+
+      <h1>Date Difference Calculator</h1>
+
+      <p>
+        Calculate the exact difference between two dates in
+        years, months and days, plus total days and weeks.
+      </p>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- CALCULATOR -->
+
+  <section class="calculator-section">
+
+    <div class="container">
+
+      <div class="calculator-card">
+
+
+        <!-- START DATE -->
+
+        <div class="form-group">
+
+          <label for="startDate">
+            Start Date
+          </label>
+
+          <input
+            type="date"
+            id="startDate"
+          >
+
+        </div>
+
+
+
+        <!-- END DATE -->
+
+        <div class="form-group">
+
+          <label for="endDate">
+            End Date
+          </label>
+
+          <input
+            type="date"
+            id="endDate"
+          >
+
+        </div>
+
+
+
+        <!-- BUTTONS -->
+
+        <div class="button-group">
+
+          <button
+            type="button"
+            id="calculateBtn"
+            class="primary-btn"
+          >
+            Calculate Difference
+          </button>
+
+
+          <button
+            type="button"
+            id="clearBtn"
+            class="secondary-btn"
+          >
+            Clear
+          </button>
+
+        </div>
+
+
+
+        <!-- ERROR -->
+
+        <div
+          id="errorMessage"
+          class="error-message"
+          role="alert"
+          aria-live="polite"
+        ></div>
+
+
+
+        <!-- RESULTS -->
+
+        <div
+          id="result"
+          class="result-card"
+          style="display:none;"
+        >
+
+
+          <div class="result-main">
+
+            <span class="result-label">
+              Date Difference
+            </span>
+
+            <strong id="dateDifference">
+              0 years, 0 months, 0 days
+            </strong>
+
+          </div>
+
+
+
+          <div class="result-details">
+
+
+            <div>
+
+              <span>
+                Total Days
+              </span>
+
+              <strong id="totalDays">
+                0
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Total Weeks
+              </span>
+
+              <strong id="totalWeeks">
+                0
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Start Date
+              </span>
+
+              <strong id="resultStart">
+                -
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                End Date
+              </span>
+
+              <strong id="resultEnd">
+                -
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <button
+            type="button"
+            id="copyBtn"
+            class="copy-btn"
+          >
+            Copy Results
+          </button>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- CONTENT -->
+
+  <section class="content-section">
+
+    <div class="container">
+
+
+      <h2>What Is a Date Difference Calculator?</h2>
+
+      <p>
+        A date difference calculator finds the amount of time
+        between two calendar dates. Instead of showing only the
+        total number of days, this calculator also breaks the
+        difference down into years, months and days.
+      </p>
+
+      <p>
+        This makes it useful for calculating ages, contract
+        periods, project durations, anniversaries, subscription
+        periods and other date-based time periods.
+      </p>
+
+
+
+      <h2>How to Calculate the Difference Between Two Dates</h2>
+
+      <ol>
+
+        <li>
+          Select the starting date.
+        </li>
+
+        <li>
+          Select the ending date.
+        </li>
+
+        <li>
+          Click <strong>Calculate Difference</strong>.
+        </li>
+
+        <li>
+          View the result in years, months and days.
+        </li>
+
+      </ol>
+
+
+
+      <h2>Example</h2>
+
+      <p>
+        If the start date is September 14, 2020 and the end date
+        is September 14, 2026, the date difference is:
+      </p>
+
+      <p>
+        <strong>6 years, 0 months, 0 days</strong>
+      </p>
+
+      <p>
+        The calculator also shows the total number of elapsed
+        calendar days and weeks.
+      </p>
+
+
+
+      <h2>Years, Months and Days vs Total Days</h2>
+
+      <p>
+        A calendar-based date difference is different from simply
+        dividing the total number of days by 365.
+      </p>
+
+      <p>
+        Months have different numbers of days, and leap years can
+        contain an additional day. For that reason, this calculator
+        calculates the calendar difference first and separately
+        reports the total number of elapsed days.
+      </p>
+
+
+
+      <h2>Common Uses</h2>
+
+      <ul>
+
+        <li>
+          Calculate age or time since a specific date.
+        </li>
+
+        <li>
+          Calculate project durations.
+        </li>
+
+        <li>
+          Calculate contract periods.
+        </li>
+
+        <li>
+          Calculate subscription periods.
+        </li>
+
+        <li>
+          Calculate time between important dates.
+        </li>
+
+        <li>
+          Calculate anniversaries and milestones.
+        </li>
+
+      </ul>
+
+
+
+      <h2 id="faq">
+        Frequently Asked Questions
+      </h2>
+
+
+
+      <div class="faq">
+
+
+        <details>
+
+          <summary>
+            How do I calculate the difference between two dates?
+          </summary>
+
+          <p>
+            Enter the start date and end date, then click
+            Calculate Difference. The calculator will show the
+            difference in years, months and days.
+          </p>
+
+        </details>
+
+
+
+        <details>
+
+          <summary>
+            Can this calculator calculate years, months and days?
+          </summary>
+
+          <p>
+            Yes. It provides a calendar-based difference in
+            years, months and days.
+          </p>
+
+        </details>
+
+
+
+        <details>
+
+          <summary>
+            Does the calculator include the start date?
+          </summary>
+
+          <p>
+            The date difference represents the elapsed time from
+            the start date to the end date. The total-day result
+            is the standard difference between the two dates.
+          </p>
+
+        </details>
+
+
+
+        <details>
+
+          <summary>
+            Can I calculate dates from the past?
+          </summary>
+
+          <p>
+            Yes. You can use any valid dates, including dates
+            from previous years.
+          </p>
+
+        </details>
+
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer class="site-footer">
+
+  <div class="container">
+
+    <div class="footer-links">
+
+      <a href="index.html">
+        Calculator
+      </a>
+
+      <a href="add-business-days.html">
+        Add Business Days
+      </a>
+
+      <a href="subtract-business-days.html">
+        Subtract Business Days
+      </a>
+
+      <a href="days-between-dates.html">
+        Days Between Dates
+      </a>
+
+      <a href="date-difference.html">
+        Date Difference
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a href="contact.html">
+        Contact
+      </a>
+
+      <a href="privacy.html">
+        Privacy Policy
+      </a>
+
+      <a href="terms.html">
+        Terms of Use
+      </a>
+
+    </div>
+
+
+    <p>
+      © 2026 Business Day Calculate. All rights reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+  const startDate =
+    document.getElementById("startDate");
+
+  const endDate =
+    document.getElementById("endDate");
+
+  const calculateBtn =
+    document.getElementById("calculateBtn");
+
+  const clearBtn =
+    document.getElementById("clearBtn");
+
+  const copyBtn =
+    document.getElementById("copyBtn");
+
+
+  const result =
+    document.getElementById("result");
+
+  const errorMessage =
+    document.getElementById("errorMessage");
+
+
+  const dateDifference =
+    document.getElementById("dateDifference");
+
+  const totalDays =
+    document.getElementById("totalDays");
+
+  const totalWeeks =
+    document.getElementById("totalWeeks");
+
+  const resultStart =
+    document.getElementById("resultStart");
+
+  const resultEnd =
+    document.getElementById("resultEnd");
+
+
+
+  function formatISO(date) {
+
+    const year =
+      date.getFullYear();
+
+    const month =
+      String(date.getMonth() + 1)
+        .padStart(2, "0");
+
+    const day =
+      String(date.getDate())
+        .padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+
+  }
+
+
+
+  function parseLocalDate(value) {
+
+    const parts =
+      value.split("-").map(Number);
+
+    return new Date(
+      parts[0],
+      parts[1] - 1,
+      parts[2]
+    );
+
+  }
+
+
+
+  function formatDate(date) {
+
+    return date.toLocaleDateString(
+      "en-US",
+      {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      }
+    );
+
+  }
+
+
+
+  function getToday() {
+
+    const today =
+      new Date();
+
+    return new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate()
+    );
+
+  }
+
+
+
+  function calculateDifference(
+    start,
+    end
+  ) {
+
+    let years =
+      end.getFullYear() -
+      start.getFullYear();
+
+
+    let months =
+      end.getMonth() -
+      start.getMonth();
+
+
+    let days =
+      end.getDate() -
+      start.getDate();
+
+
+    if (days < 0) {
+
+      months--;
+
+      const previousMonth =
+        new Date(
+          end.getFullYear(),
+          end.getMonth(),
+          0
+        );
+
+      days +=
+        previousMonth.getDate();
+
+    }
+
+
+    if (months < 0) {
+
+      years--;
+
+      months += 12;
+
+    }
+
+
+    return {
+      years,
+      months,
+      days
+    };
+
+  }
+
+
+
+  function calculate() {
+
+    errorMessage.textContent =
+      "";
+
+    result.style.display =
+      "none";
+
+
+    if (!startDate.value) {
+
+      errorMessage.textContent =
+        "Please select a start date.";
+
+      return;
+
+    }
+
+
+    if (!endDate.value) {
+
+      errorMessage.textContent =
+        "Please select an end date.";
+
+      return;
+
+    }
+
+
+    const start =
+      parseLocalDate(
+        startDate.value
+      );
+
+    const end =
+      parseLocalDate(
+        endDate.value
+      );
+
+
+    if (start > end) {
+
+      errorMessage.textContent =
+        "Please make sure the end date is on or after the start date.";
+
+      return;
+
+    }
+
+
+
+    const difference =
+      calculateDifference(
+        start,
+        end
+      );
+
+
+
+    const millisecondsPerDay =
+      24 * 60 * 60 * 1000;
+
+
+    const days =
+      Math.round(
+        (end - start) /
+        millisecondsPerDay
+      );
+
+
+    const weeks =
+      (days / 7).toFixed(2);
+
+
+
+    dateDifference.textContent =
+      `${difference.years} year${difference.years !== 1 ? "s" : ""}, ` +
+      `${difference.months} month${difference.months !== 1 ? "s" : ""}, ` +
+      `${difference.days} day${difference.days !== 1 ? "s" : ""}`;
+
+
+    totalDays.textContent =
+      days.toLocaleString();
+
+
+    totalWeeks.textContent =
+      weeks;
+
+
+    resultStart.textContent =
+      formatDate(start);
+
+
+    resultEnd.textContent =
+      formatDate(end);
+
+
+    result.style.display =
+      "block";
+
+
+    result.classList.remove(
+      "result-show"
+    );
+
+
+    void result.offsetWidth;
+
+
+    result.classList.add(
+      "result-show"
+    );
+
+  }
+
+
+
+  function clearCalculator() {
+
+    const today =
+      getToday();
+
+
+    const future =
+      new Date(today);
+
+
+    future.setFullYear(
+      future.getFullYear() + 1
+    );
+
+
+    startDate.value =
+      formatISO(today);
+
+
+    endDate.value =
+      formatISO(future);
+
+
+    errorMessage.textContent =
+      "";
+
+
+    result.style.display =
+      "none";
+
+  }
+
+
+
+  async function copyResult() {
+
+    const text =
+`Date Difference Results
+Difference: ${dateDifference.textContent}
+Total Days: ${totalDays.textContent}
+Total Weeks: ${totalWeeks.textContent}
+Start Date: ${resultStart.textContent}
+End Date: ${resultEnd.textContent}`;
+
+
+    try {
+
+      await navigator.clipboard
+        .writeText(text);
+
+
+      const original =
+        copyBtn.textContent;
+
+
+      copyBtn.textContent =
+        "Copied!";
+
+
+      setTimeout(() => {
+
+        copyBtn.textContent =
+          original;
+
+      }, 1500);
+
+
+    } catch {
+
+      errorMessage.textContent =
+        "Unable to copy the results.";
+
+    }
+
+  }
+
+
+
+  calculateBtn.addEventListener(
+    "click",
+    calculate
+  );
+
+
+  clearBtn.addEventListener(
+    "click",
+    clearCalculator
+  );
+
+
+  copyBtn.addEventListener(
+    "click",
+    copyResult
+  );
+
+
+
+  /* Default dates */
+
+  const today =
+    getToday();
+
+
+  const future =
+    new Date(today);
+
+
+  future.setFullYear(
+    future.getFullYear() + 1
+  );
+
+
+  startDate.value =
+    formatISO(today);
+
+
+  endDate.value =
+    formatISO(future);
+
+});
+
+</script>
+
+
+</body>
+</html>
