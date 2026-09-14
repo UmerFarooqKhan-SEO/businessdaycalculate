@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Add Business Days Calculator - Working Days</title>
+
+  <meta name="description" content="Free Add Business Days Calculator. Enter a start date and number of working days to find the exact future business date, excluding weekends and holidays.">
+
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <meta name="author" content="Umer Farooq Khan">
+
+  <link rel="canonical" href="https://umerfarooqkhan-seo.github.io/businessdaycalculate/add-business-days.html">
+
+  <meta property="og:title" content="Add Business Days Calculator">
+  <meta property="og:description" content="Calculate a future business date by adding working days while excluding weekends and holidays.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://umerfarooqkhan-seo.github.io/businessdaycalculate/add-business-days.html">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Add Business Days Calculator">
+  <meta name="twitter:description" content="Find a future working date by adding business days and excluding weekends and holidays.">
+
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .tool-card {
+      max-width: 760px;
+      margin: 30px auto;
+    }
+
+    .field-group {
+      margin-bottom: 22px;
+    }
+
+    .field-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .field-group input,
+    .field-group select,
+    .field-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .field-group textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .help-text {
+      display: block;
+      margin-top: 6px;
+      font-size: 14px;
+      opacity: 0.75;
+    }
+
+    .result-box {
+      margin-top: 25px;
+      padding: 24px;
+      border-radius: 12px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      text-align: center;
+      display: none;
+    }
+
+    .result-box.show {
+      display: block;
+      animation: resultIn 0.35s ease;
+    }
+
+    .result-date {
+      font-size: 32px;
+      font-weight: 700;
+      margin: 10px 0;
+    }
+
+    .result-details {
+      margin-top: 15px;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .error-message {
+      display: none;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 8px;
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    @keyframes resultIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .result-date {
+        font-size: 26px;
+      }
+
+      .button-row {
+        flex-direction: column;
+      }
+
+      .button-row button {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Add Business Days Calculator",
+    "url": "https://umerfarooqkhan-seo.github.io/businessdaycalculate/add-business-days.html",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "description": "Calculate a future date by adding business days while excluding weekends and optional holidays.",
+    "author": {
+      "@type": "Person",
+      "name": "Umer Farooq Khan"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does adding business days mean?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Adding business days means moving forward from a starting date while counting only selected working days and excluding weekends and optional holidays."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this calculator exclude weekends?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The calculator can exclude Saturday and Sunday by default, or you can choose a different working week."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I add holidays?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can enter holiday dates in YYYY-MM-DD format and the calculator will skip them."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the starting date count as a business day?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "By default, the calculator starts counting after the starting date. If the starting date is a working day, it is not counted as day one."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+
+      <a href="index.html" class="logo">
+        Business Day Calculate
+      </a>
+
+      <nav>
+        <a href="index.html">Calculator</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+
+    </div>
+  </div>
+</header>
+
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+
+      <h1>Add Business Days Calculator</h1>
+
+      <p>
+        Calculate a future working date by adding business days while
+        excluding weekends and optional holidays.
+      </p>
+
+    </div>
+  </section>
+
+
+  <section class="container">
+
+    <div class="card tool-card">
+
+      <div class="field-group">
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate">
+      </div>
+
+
+      <div class="field-group">
+        <label for="businessDays">Business Days to Add</label>
+
+        <input
+          type="number"
+          id="businessDays"
+          min="0"
+          step="1"
+          value="10"
+          placeholder="e.g. 10"
+        >
+
+        <span class="help-text">
+          Enter the number of working days you want to add.
+        </span>
+      </div>
+
+
+      <div class="field-group">
+
+        <label for="workingWeek">
+          Working Week
+        </label>
+
+        <select id="workingWeek">
+
+          <option value="mon-fri">
+            Monday - Friday
+          </option>
+
+          <option value="mon-sat">
+            Monday - Saturday
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field-group">
+
+        <label for="holidays">
+          Holidays (Optional)
+        </label>
+
+        <textarea
+          id="holidays"
+          placeholder="Enter one holiday per line&#10;2026-12-25&#10;2027-01-01"
+        ></textarea>
+
+        <span class="help-text">
+          Use YYYY-MM-DD format, one date per line.
+        </span>
+
+      </div>
+
+
+      <div class="button-row">
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="calculateBtn"
+        >
+          Calculate Date
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-secondary"
+          id="clearBtn"
+        >
+          Clear
+        </button>
+
+      </div>
+
+
+      <div
+        class="error-message"
+        id="errorMessage"
+      ></div>
+
+
+      <div
+        class="result-box"
+        id="resultBox"
+      >
+
+        <div>Future Business Date</div>
+
+        <div
+          class="result-date"
+          id="resultDate"
+        ></div>
+
+        <div
+          class="result-details"
+          id="resultDetails"
+        ></div>
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="copyBtn"
+        >
+          Copy Result
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <section class="content-section">
+
+      <h2>What Is an Add Business Days Calculator?</h2>
+
+      <p>
+        An Add Business Days Calculator helps you find a future date by
+        adding a specific number of working days to a starting date.
+        Weekends are skipped automatically, and you can also exclude
+        holidays.
+      </p>
+
+      <p>
+        This can be useful for project deadlines, delivery estimates,
+        payment terms, employee leave calculations, contracts, business
+        planning and other situations where calendar days are different
+        from working days.
+      </p>
+
+
+      <h2>How to Add Business Days</h2>
+
+      <p>
+        Enter your starting date and the number of business days you want
+        to add. The calculator moves forward one day at a time and counts
+        only the days included in your selected working week.
+      </p>
+
+      <p>
+        For example, if you add 5 business days to a Monday using a
+        Monday-to-Friday working week, the result will be the following
+        Monday.
+      </p>
+
+
+      <h2>Business Days vs Calendar Days</h2>
+
+      <p>
+        Calendar days include every day of the week, including Saturdays
+        and Sundays. Business days normally refer to working days and
+        exclude weekends.
+      </p>
+
+      <p>
+        Public holidays can also affect the result. Because holidays vary
+        between countries, companies and organisations, this calculator
+        lets you enter your own holiday dates.
+      </p>
+
+
+      <h2>When Is This Calculator Useful?</h2>
+
+      <ul>
+        <li>Calculating business deadlines</li>
+        <li>Estimating delivery and processing dates</li>
+        <li>Planning project milestones</li>
+        <li>Calculating payment due dates</li>
+        <li>Planning employee leave</li>
+        <li>Checking contract deadlines</li>
+        <li>Calculating working-day turnaround times</li>
+      </ul>
+
+
+      <h2 id="faq">Frequently Asked Questions</h2>
+
+
+      <details>
+        <summary>What does adding business days mean?</summary>
+        <p>
+          It means moving forward from a starting date while counting only
+          selected working days and skipping weekends and optional holidays.
+        </p>
+      </details>
+
+
+      <details>
+        <summary>Does the calculator exclude weekends?</summary>
+        <p>
+          Yes. The default working week is Monday to Friday. You can also
+          choose Monday to Saturday.
+        </p>
+      </details>
+
+
+      <details>
+        <summary>Can I add holidays?</summary>
+        <p>
+          Yes. Enter your holiday dates in YYYY-MM-DD format, with one date
+          on each line.
+        </p>
+      </details>
+
+
+      <details>
+        <summary>Does the starting date count?</summary>
+        <p>
+          No. The calculator begins counting business days after the
+          starting date. This makes the tool suitable for common
+          "add X business days" calculations.
+        </p>
+      </details>
+
+
+      <details>
+        <summary>Can I add zero business days?</summary>
+        <p>
+          Yes. Adding zero business days returns the starting date.
+        </p>
+      </details>
+
+    </section>
+
+
+    <section class="content-section">
+
+      <h2>More Date Calculators</h2>
+
+      <p>
+        Need to calculate working days between two dates?
+        Use our
+        <a href="index.html">
+          Business Day Calculator
+        </a>.
+      </p>
+
+    </section>
+
+  </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="container">
+
+    <div class="footer-inner">
+
+      <div>
+        <strong>Business Day Calculate</strong>
+        <p>
+          Free online business day and working day calculators.
+        </p>
+      </div>
+
+      <nav>
+        <a href="index.html">Calculator</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+      </nav>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 Business Day Calculate. All rights reserved.
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+(function () {
+
+  const startDate = document.getElementById("startDate");
+  const businessDays = document.getElementById("businessDays");
+  const workingWeek = document.getElementById("workingWeek");
+  const holidays = document.getElementById("holidays");
+
+  const calculateBtn = document.getElementById("calculateBtn");
+  const clearBtn = document.getElementById("clearBtn");
+  const copyBtn = document.getElementById("copyBtn");
+
+  const resultBox = document.getElementById("resultBox");
+  const resultDate = document.getElementById("resultDate");
+  const resultDetails = document.getElementById("resultDetails");
+  const errorMessage = document.getElementById("errorMessage");
+
+
+  function formatDate(date) {
+
+    return date.toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    });
+
+  }
+
+
+  function formatISO(date) {
+
+    const year = date.getFullYear();
+
+    const month = String(
+      date.getMonth() + 1
+    ).padStart(2, "0");
+
+    const day = String(
+      date.getDate()
+    ).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+
+  }
+
+
+  function isWorkingDay(date) {
+
+    const day = date.getDay();
+
+    if (workingWeek.value === "mon-fri") {
+
+      return day >= 1 && day <= 5;
+
+    }
+
+    if (workingWeek.value === "mon-sat") {
+
+      return day >= 1 && day <= 6;
+
+    }
+
+    return false;
+
+  }
+
+
+  function getHolidays() {
+
+    const lines = holidays.value
+      .split(/\r?\n/)
+      .map(item => item.trim())
+      .filter(Boolean);
+
+    return new Set(lines);
+
+  }
+
+
+  function showError(message) {
+
+    errorMessage.textContent = message;
+    errorMessage.classList.add("show");
+
+    resultBox.classList.remove("show");
+
+  }
+
+
+  function clearError() {
+
+    errorMessage.textContent = "";
+    errorMessage.classList.remove("show");
+
+  }
+
+
+  function calculate() {
+
+    clearError();
+
+    const startValue = startDate.value;
+
+    const daysToAdd = Number(
+      businessDays.value
+    );
+
+
+    if (!startValue) {
+
+      showError("Please select a start date.");
+      return;
+
+    }
+
+
+    if (
+      !Number.isInteger(daysToAdd) ||
+      daysToAdd < 0
+    ) {
+
+      showError(
+        "Please enter a valid whole number of business days."
+      );
+
+      return;
+
+    }
+
+
+    const holidaySet = getHolidays();
+
+    let currentDate = new Date(
+      startValue + "T00:00:00"
+    );
+
+    let remaining = daysToAdd;
+
+    let skippedWeekends = 0;
+    let skippedHolidays = 0;
+
+
+    while (remaining > 0) {
+
+      currentDate.setDate(
+        currentDate.getDate() + 1
+      );
+
+
+      if (!isWorkingDay(currentDate)) {
+
+        skippedWeekends++;
+        continue;
+
+      }
+
+
+      if (
+        holidaySet.has(
+          formatISO(currentDate)
+        )
+      ) {
+
+        skippedHolidays++;
+        continue;
+
+      }
+
+
+      remaining--;
+
+    }
+
+
+    resultDate.textContent =
+      formatDate(currentDate);
+
+
+    resultDetails.innerHTML = `
+      <strong>${daysToAdd}</strong> business day${daysToAdd === 1 ? "" : "s"}
+      added from
+      <strong>${formatDate(new Date(startValue + "T00:00:00"))}</strong>.
+      <br>
+      Final date: <strong>${formatISO(currentDate)}</strong>
+      <br>
+      Weekend days skipped: <strong>${skippedWeekends}</strong>
+      <br>
+      Holiday dates skipped: <strong>${skippedHolidays}</strong>
+    `;
+
+
+    resultBox.classList.remove("show");
+
+    requestAnimationFrame(() => {
+      resultBox.classList.add("show");
+    });
+
+  }
+
+
+  function clearAll() {
+
+    const today = new Date();
+
+    startDate.value = formatISO(today);
+
+    businessDays.value = 10;
+
+    workingWeek.value = "mon-fri";
+
+    holidays.value = "";
+
+    clearError();
+
+    resultBox.classList.remove("show");
+
+  }
+
+
+  calculateBtn.addEventListener(
+    "click",
+    calculate
+  );
+
+
+  clearBtn.addEventListener(
+    "click",
+    clearAll
+  );
+
+
+  copyBtn.addEventListener(
+    "click",
+    async function () {
+
+      const text =
+        `Future Business Date: ${resultDate.textContent}\n` +
+        resultDetails.innerText;
+
+      try {
+
+        await navigator.clipboard.writeText(text);
+
+        const originalText =
+          copyBtn.textContent;
+
+        copyBtn.textContent =
+          "Copied!";
+
+        setTimeout(() => {
+
+          copyBtn.textContent =
+            originalText;
+
+        }, 1500);
+
+      } catch (error) {
+
+        copyBtn.textContent =
+          "Copy failed";
+
+      }
+
+    }
+  );
+
+
+  startDate.value =
+    formatISO(new Date());
+
+})();
+</script>
+
+</body>
+</html>
