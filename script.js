@@ -7,29 +7,83 @@ const customDays = document.getElementById("customDays");
 const results = document.getElementById("results");
 const errorBox = document.getElementById("error");
 
+const calculateBtn = document.getElementById("calculateBtn");
+const clearBtn = document.getElementById("clearBtn");
+const copyBtn = document.getElementById("copyBtn");
+
+const businessDaysOutput = document.getElementById("businessDays");
+const calendarDaysOutput = document.getElementById("calendarDays");
+const weekendDaysOutput = document.getElementById("weekendDays");
+const holidayDaysOutput = document.getElementById("holidayDays");
+
 const pad = n => String(n).padStart(2, "0");
 
 function localISODate(date = new Date()) {
   return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 }
 
-startDate.value = localISODate();
+function getDefaultDates() {
+  const today = new Date();
 
-const defaultEnd = new Date();
-defaultEnd.setDate(defaultEnd.getDate() + 30);
-endDate.value = localISODate(defaultEnd);
+  const end = new Date(today);
+  end.setDate(end.getDate() + 30);
+
+  return {
+    start: localISODate(today),
+    end: localISODate(end)
+  };
+}
+
+function setDefaultDates() {
+  const defaults = getDefaultDates();
+
+  startDate.value = defaults.start;
+  endDate.value = defaults.end;
+}
+
+setDefaultDates();
+
+/* --------------------------------
+   Working week selection
+-------------------------------- */
 
 document.querySelectorAll('input[name="week"]').forEach(radio => {
   radio.addEventListener("change", () => {
-    customDays.classList.toggle("hidden", radio.value !== "custom" || !radio.checked);
+    const isCustom = radio.value === "custom" && radio.checked;
+    customDays.classList.toggle("hidden", !isCustom);
+
+    if (isCustom) {
+      const checkedDays = customDays.querySelectorAll(
+        'input[type="checkbox"]:checked'
+      );
+
+      if (checkedDays.length === 0) {
+        customDays
+          .querySelectorAll('input[type="checkbox"]')
+          .forEach((input, index) => {
+            input.checked = index < 5;
+          });
+      }
+    }
   });
 });
 
-function selectedWorkingDays() {
-  const mode = document.querySelector('input[name="week"]:checked').value;
+/* --------------------------------
+   Selected working days
+-------------------------------- */
 
-  if (mode === "mon-fri") return new Set([1, 2, 3, 4, 5]);
-  if (mode === "mon-sat") return new Set([1, 2, 3, 4, 5, 6]);
+function selectedWorkingDays() {
+  const mode = document.querySelector(
+    'input[name="week"]:checked'
+  ).value;
+
+  if (mode === "mon-fri") {
+    return new Set([1, 2, 3, 4, 5]);
+  }
+
+  if (mode === "mon-sat") {
+    return new Set([1, 2, 3, 4, 5, 6]);
+  }
 
   return new Set(
     [...customDays.querySelectorAll('input[type="checkbox"]:checked')]
@@ -37,37 +91,102 @@ function selectedWorkingDays() {
   );
 }
 
+/* --------------------------------
+   Holiday validation
+-------------------------------- */
+
+function isValidISODate(value) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    return false;
+  }
+
+  const [year, month, day] = value.split("-").map(Number);
+  const date = new Date(year, month - 1, day);
+
+  return (
+    date.getFullYear() === year &&
+    date.getMonth() === month - 1 &&
+    date.getDate() === day
+  );
+}
+
 function parseHolidaySet() {
   const set = new Set();
+  const invalidDates = [];
 
   holidays.value.split(/\r?\n/).forEach(value => {
     const date = value.trim();
-    if (/^\d{4}-\d{2}-\d{2}$/.test(date)) set.add(date);
+
+    if (!date) {
+      return;
+    }
+
+    if (isValidISODate(date)) {
+      set.add(date);
+    } else {
+      invalidDates.push(date);
+    }
   });
 
-  return set;
+  return {
+    set,
+    invalidDates
+  };
 }
+
+/* --------------------------------
+   Date range
+-------------------------------- */
 
 function dateRange(start, end) {
   const dates = [];
-  const current = new Date(start.getFullYear(), start.getMonth(), start.getDate());
-  const last = new Date(end.getFullYear(), end.getMonth(), end.getDate());
+
+  const current = new Date(
+    start.getFullYear(),
+    start.getMonth(),
+    start.getDate()
+  );
+
+  const last = new Date(
+    end.getFullYear(),
+    end.getMonth(),
+    end.getDate()
+  );
 
   while (current <= last) {
     dates.push(new Date(current));
     current.setDate(current.getDate() + 1);
   }
+
   return dates;
 }
+
+/* --------------------------------
+   Error handling
+-------------------------------- */
 
 function showError(message) {
   errorBox.textContent = message;
   errorBox.classList.remove("hidden");
   results.classList.add("hidden");
+
+  errorBox.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
 }
 
-function calculate() {
+function clearError() {
+  errorBox.textContent = "";
   errorBox.classList.add("hidden");
+}
+
+/* --------------------------------
+   Calculate
+-------------------------------- */
+
+function calculate() {
+  clearError();
 
   if (!startDate.value || !endDate.value) {
     showError("Please enter both a start date and an end date.");
@@ -77,8 +196,15 @@ function calculate() {
   const start = new Date(`${startDate.value}T00:00:00`);
   const end = new Date(`${endDate.value}T00:00:00`);
 
+  if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) {
+    showError("Please enter valid dates.");
+    return;
+  }
+
   if (start > end) {
-    showError("The start date must be before or the same as the end date.");
+    showError(
+      "The start date must be before or the same as the end date."
+    );
     return;
   }
 
@@ -89,8 +215,25 @@ function calculate() {
     return;
   }
 
-  const holidaySet = parseHolidaySet();
+  const {
+    set: holidaySet,
+    invalidDates
+  } = parseHolidaySet();
+
+  if (invalidDates.length > 0) {
+    showError(
+      `Please check these holiday dates: ${invalidDates.join(", ")}. Use YYYY-MM-DD format.`
+    );
+    return;
+  }
+
   const dates = dateRange(start, end);
+
+  /*
+    Calendar days always represent the complete date range,
+    regardless of whether the user chooses to include/exclude
+    the start or end date.
+  */
   const calendarDays = dates.length;
 
   let businessDays = 0;
@@ -101,7 +244,16 @@ function calculate() {
     const isFirst = index === 0;
     const isLast = index === dates.length - 1;
 
-    if ((isFirst && !includeStart.checked) || (isLast && !includeEnd.checked)) return;
+    /*
+      Start/end inclusion affects the calculated working-day
+      totals, but calendar days still show the full date range.
+    */
+    if (
+      (isFirst && !includeStart.checked) ||
+      (isLast && !includeEnd.checked)
+    ) {
+      return;
+    }
 
     const day = date.getDay();
     const iso = localISODate(date);
@@ -119,42 +271,130 @@ function calculate() {
     businessDays++;
   });
 
-  document.getElementById("businessDays").textContent = businessDays.toLocaleString();
-  document.getElementById("calendarDays").textContent = calendarDays.toLocaleString();
-  document.getElementById("weekendDays").textContent = weekendDays.toLocaleString();
-  document.getElementById("holidayDays").textContent = holidayCount.toLocaleString();
+  updateResult(
+    businessDaysOutput,
+    businessDays.toLocaleString()
+  );
+
+  updateResult(
+    calendarDaysOutput,
+    calendarDays.toLocaleString()
+  );
+
+  updateResult(
+    weekendDaysOutput,
+    weekendDays.toLocaleString()
+  );
+
+  updateResult(
+    holidayDaysOutput,
+    holidayCount.toLocaleString()
+  );
 
   results.classList.remove("hidden");
+
+  /*
+    Restart the result animation each time a new calculation
+    is performed.
+  */
+  results.classList.remove("results-animate");
+
+  requestAnimationFrame(() => {
+    results.classList.add("results-animate");
+  });
 }
 
-document.getElementById("calculateBtn").addEventListener("click", calculate);
+/* --------------------------------
+   Result animation helper
+-------------------------------- */
 
-document.getElementById("clearBtn").addEventListener("click", () => {
-  startDate.value = "";
-  endDate.value = "";
-  holidays.value = "";
-  includeStart.checked = true;
-  includeEnd.checked = true;
-  document.querySelector('input[name="week"][value="mon-fri"]').checked = true;
-  customDays.classList.add("hidden");
-  customDays.querySelectorAll("input").forEach(input => input.checked = false);
-  results.classList.add("hidden");
-  errorBox.classList.add("hidden");
+function updateResult(element, value) {
+  element.textContent = value;
+
+  element.classList.remove("number-pop");
+
+  requestAnimationFrame(() => {
+    element.classList.add("number-pop");
+  });
+}
+
+/* --------------------------------
+   Calculate button
+-------------------------------- */
+
+calculateBtn.addEventListener("click", calculate);
+
+/* --------------------------------
+   Enter key support
+-------------------------------- */
+
+[startDate, endDate].forEach(input => {
+  input.addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      calculate();
+    }
+  });
 });
 
-document.getElementById("copyBtn").addEventListener("click", async () => {
+/* --------------------------------
+   Clear button
+-------------------------------- */
+
+clearBtn.addEventListener("click", () => {
+  setDefaultDates();
+
+  holidays.value = "";
+
+  includeStart.checked = true;
+  includeEnd.checked = true;
+
+  const defaultWeek = document.querySelector(
+    'input[name="week"][value="mon-fri"]'
+  );
+
+  defaultWeek.checked = true;
+
+  customDays.classList.add("hidden");
+
+  customDays
+    .querySelectorAll("input")
+    .forEach(input => {
+      input.checked = false;
+    });
+
+  clearError();
+
+  results.classList.add("hidden");
+
+  copyBtn.textContent = "Copy Results";
+});
+
+/* --------------------------------
+   Copy results
+-------------------------------- */
+
+copyBtn.addEventListener("click", async () => {
   const text = [
-    `Business Days: ${document.getElementById("businessDays").textContent}`,
-    `Calendar Days: ${document.getElementById("calendarDays").textContent}`,
-    `Weekend Days: ${document.getElementById("weekendDays").textContent}`,
-    `Holidays Excluded: ${document.getElementById("holidayDays").textContent}`
+    `Business Days: ${businessDaysOutput.textContent}`,
+    `Calendar Days: ${calendarDaysOutput.textContent}`,
+    `Weekend Days: ${weekendDaysOutput.textContent}`,
+    `Holidays Excluded: ${holidayDaysOutput.textContent}`
   ].join("\n");
 
   try {
     await navigator.clipboard.writeText(text);
-    document.getElementById("copyBtn").textContent = "Copied!";
-    setTimeout(() => document.getElementById("copyBtn").textContent = "Copy Results", 1500);
+
+    copyBtn.textContent = "✓ Results Copied";
+
+    setTimeout(() => {
+      copyBtn.textContent = "Copy Results";
+    }, 1800);
+
   } catch {
-    showError("Your browser did not allow copying automatically. Please copy the results manually.");
+    showError(
+      "Your browser did not allow automatic copying. Please copy the results manually."
+    );
   }
 });
+```
