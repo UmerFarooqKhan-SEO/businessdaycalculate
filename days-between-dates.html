@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Days Between Dates Calculator - Calculate Days</title>
+
+  <meta name="description" content="Free days between dates calculator. Calculate calendar days, business days, weekends and weeks between two dates.">
+
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <meta name="author" content="Umer Farooq Khan">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="canonical" href="https://umerfarooqkhan-seo.github.io/businessdaycalculate/days-between-dates.html">
+
+  <meta property="og:title" content="Days Between Dates Calculator">
+  <meta property="og:description" content="Calculate the number of calendar days, business days, weekends and weeks between two dates.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://umerfarooqkhan-seo.github.io/businessdaycalculate/days-between-dates.html">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Days Between Dates Calculator">
+  <meta name="twitter:description" content="Calculate the number of days between two dates, including business days and weekends.">
+
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="stylesheet" href="style.css">
+
+
+  <!-- WebApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Days Between Dates Calculator",
+    "url": "https://umerfarooqkhan-seo.github.io/businessdaycalculate/days-between-dates.html",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "description": "A free calculator for finding the number of calendar days, business days and weekends between two dates.",
+    "author": {
+      "@type": "Person",
+      "name": "Umer Farooq Khan"
+    }
+  }
+  </script>
+
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How many days are between two dates?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enter the two dates into the calculator to see the number of calendar days between them, along with business days and weekend days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the calculator count the start date?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The calculator shows the standard difference between two dates. An additional inclusive count is also provided when both the start and end dates are counted."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I calculate business days between dates?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can select a Monday-to-Friday or Monday-to-Saturday working week and optionally enter holidays to exclude."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I calculate weeks between two dates?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The calculator converts the calendar-day difference into weeks and remaining days."
+        }
+      }
+    ]
+  }
+  </script>
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+  <div class="container header-inner">
+
+    <a href="index.html" class="logo">
+      Business Day Calculate
+    </a>
+
+    <nav>
+      <a href="index.html">Calculator</a>
+      <a href="index.html#how-it-works">How It Works</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<main>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="container">
+
+      <h1>Days Between Dates Calculator</h1>
+
+      <p>
+        Calculate the number of calendar days, business days,
+        weekends and weeks between two dates.
+      </p>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- CALCULATOR -->
+
+  <section class="calculator-section">
+
+    <div class="container">
+
+      <div class="calculator-card">
+
+
+        <!-- START DATE -->
+
+        <div class="form-group">
+
+          <label for="startDate">
+            Start Date
+          </label>
+
+          <input
+            type="date"
+            id="startDate"
+          >
+
+        </div>
+
+
+
+        <!-- END DATE -->
+
+        <div class="form-group">
+
+          <label for="endDate">
+            End Date
+          </label>
+
+          <input
+            type="date"
+            id="endDate"
+          >
+
+        </div>
+
+
+
+        <!-- WORKING WEEK -->
+
+        <div class="form-group">
+
+          <label>
+            Working Week
+          </label>
+
+
+          <div class="radio-group">
+
+            <label class="radio-option">
+
+              <input
+                type="radio"
+                name="workingWeek"
+                value="mon-fri"
+                checked
+              >
+
+              Monday - Friday
+
+            </label>
+
+
+            <label class="radio-option">
+
+              <input
+                type="radio"
+                name="workingWeek"
+                value="mon-sat"
+              >
+
+              Monday - Saturday
+
+            </label>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- HOLIDAYS -->
+
+        <div class="form-group">
+
+          <label for="holidays">
+
+            Holidays
+
+            <span class="optional">
+              (optional)
+            </span>
+
+          </label>
+
+
+          <textarea
+            id="holidays"
+            rows="5"
+            placeholder="Enter one holiday per line, for example:
+2026-12-25
+2026-12-26"
+          ></textarea>
+
+
+          <small>
+            Use the format YYYY-MM-DD.
+          </small>
+
+        </div>
+
+
+
+        <!-- BUTTONS -->
+
+        <div class="button-group">
+
+          <button
+            type="button"
+            id="calculateBtn"
+            class="primary-btn"
+          >
+            Calculate Days
+          </button>
+
+
+          <button
+            type="button"
+            id="clearBtn"
+            class="secondary-btn"
+          >
+            Clear
+          </button>
+
+        </div>
+
+
+
+        <!-- ERROR -->
+
+        <div
+          id="errorMessage"
+          class="error-message"
+          role="alert"
+          aria-live="polite"
+        ></div>
+
+
+
+        <!-- RESULTS -->
+
+        <div
+          id="result"
+          class="result-card"
+          style="display:none;"
+        >
+
+
+          <div class="result-main">
+
+            <span class="result-label">
+              Calendar Days
+            </span>
+
+            <strong id="calendarDays">
+              0
+            </strong>
+
+          </div>
+
+
+
+          <div class="result-details">
+
+
+            <div>
+
+              <span>
+                Inclusive Days
+              </span>
+
+              <strong id="inclusiveDays">
+                0
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Business Days
+              </span>
+
+              <strong id="businessDays">
+                0
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Weekend Days
+              </span>
+
+              <strong id="weekendDays">
+                0
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Weeks
+              </span>
+
+              <strong id="weeks">
+                0
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Working Week
+              </span>
+
+              <strong id="workingWeekResult">
+                Monday - Friday
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Holidays Excluded
+              </span>
+
+              <strong id="holidaysExcluded">
+                0
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <button
+            type="button"
+            id="copyBtn"
+            class="copy-btn"
+          >
+            Copy Results
+          </button>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- CONTENT -->
+
+  <section class="content-section">
+
+    <div class="container">
+
+
+      <h2>How Many Days Are Between Two Dates?</h2>
+
+      <p>
+        The number of days between two dates depends on the dates
+        you choose and whether you count the starting and ending
+        dates. This calculator gives you the standard calendar-day
+        difference as well as an inclusive day count.
+      </p>
+
+      <p>
+        It also calculates business days, weekend days and weeks,
+        making it useful for planning deadlines, projects, holidays,
+        contracts and work schedules.
+      </p>
+
+
+
+      <h2>How to Calculate Days Between Dates</h2>
+
+      <ol>
+
+        <li>
+          Select the starting date.
+        </li>
+
+        <li>
+          Select the ending date.
+        </li>
+
+        <li>
+          Choose your working week.
+        </li>
+
+        <li>
+          Add holidays if you want them excluded from business-day calculations.
+        </li>
+
+        <li>
+          Click <strong>Calculate Days</strong>.
+        </li>
+
+      </ol>
+
+
+
+      <h2>Calendar Days vs Business Days</h2>
+
+      <p>
+        Calendar days include every day between the two dates,
+        including Saturdays and Sundays.
+      </p>
+
+      <p>
+        Business days normally include Monday through Friday.
+        However, some organisations also operate on Saturdays.
+        This calculator lets you choose between Monday-Friday
+        and Monday-Saturday working weeks.
+      </p>
+
+
+
+      <h2>What Does Inclusive Days Mean?</h2>
+
+      <p>
+        Inclusive days count both the starting date and the ending
+        date.
+      </p>
+
+      <p>
+        For example, from September 14 to September 15 there is
+        a difference of 1 calendar day, but there are 2 inclusive
+        calendar days when both dates are counted.
+      </p>
+
+
+
+      <h2>Example</h2>
+
+      <p>
+        Suppose you want to calculate the number of days between
+        September 14, 2026 and September 28, 2026.
+      </p>
+
+      <p>
+        The standard calendar difference is 14 days. If both the
+        starting and ending dates are counted, there are 15
+        inclusive days.
+      </p>
+
+
+
+      <h2>Why Use a Days Between Dates Calculator?</h2>
+
+      <ul>
+
+        <li>
+          Calculate project durations.
+        </li>
+
+        <li>
+          Find deadlines between dates.
+        </li>
+
+        <li>
+          Calculate holiday or vacation periods.
+        </li>
+
+        <li>
+          Calculate business days for work schedules.
+        </li>
+
+        <li>
+          Calculate weeks between dates.
+        </li>
+
+        <li>
+          Exclude weekends and holidays.
+        </li>
+
+      </ul>
+
+
+
+      <h2 id="faq">
+        Frequently Asked Questions
+      </h2>
+
+
+
+      <div class="faq">
+
+
+        <details>
+
+          <summary>
+            How many days are between two dates?
+          </summary>
+
+          <p>
+            Enter the two dates into the calculator. It will show
+            the standard calendar-day difference and the inclusive
+            number of days.
+          </p>
+
+        </details>
+
+
+
+        <details>
+
+          <summary>
+            Does the calculator count the start date?
+          </summary>
+
+          <p>
+            The standard calendar difference does not count the
+            starting date as a separate day. The calculator also
+            provides an inclusive count that includes both dates.
+          </p>
+
+        </details>
+
+
+
+        <details>
+
+          <summary>
+            Can I calculate business days between dates?
+          </summary>
+
+          <p>
+            Yes. Select your working week and optionally enter
+            holidays that should be excluded.
+          </p>
+
+        </details>
+
+
+
+        <details>
+
+          <summary>
+            Can I calculate weeks between two dates?
+          </summary>
+
+          <p>
+            Yes. The calculator shows the total number of weeks
+            and remaining calendar days.
+          </p>
+
+        </details>
+
+
+
+        <details>
+
+          <summary>
+            Does it include weekends?
+          </summary>
+
+          <p>
+            Calendar days include weekends. Business-day results
+            exclude non-working weekend days.
+          </p>
+
+        </details>
+
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer class="site-footer">
+
+  <div class="container">
+
+    <div class="footer-links">
+
+      <a href="index.html">
+        Calculator
+      </a>
+
+      <a href="add-business-days.html">
+        Add Business Days
+      </a>
+
+      <a href="subtract-business-days.html">
+        Subtract Business Days
+      </a>
+
+      <a href="days-between-dates.html">
+        Days Between Dates
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a href="contact.html">
+        Contact
+      </a>
+
+      <a href="privacy.html">
+        Privacy Policy
+      </a>
+
+      <a href="terms.html">
+        Terms of Use
+      </a>
+
+    </div>
+
+
+    <p>
+      © 2026 Business Day Calculate. All rights reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+  const startDate =
+    document.getElementById("startDate");
+
+  const endDate =
+    document.getElementById("endDate");
+
+  const holidays =
+    document.getElementById("holidays");
+
+  const calculateBtn =
+    document.getElementById("calculateBtn");
+
+  const clearBtn =
+    document.getElementById("clearBtn");
+
+  const copyBtn =
+    document.getElementById("copyBtn");
+
+
+  const result =
+    document.getElementById("result");
+
+  const errorMessage =
+    document.getElementById("errorMessage");
+
+
+  const calendarDays =
+    document.getElementById("calendarDays");
+
+  const inclusiveDays =
+    document.getElementById("inclusiveDays");
+
+  const businessDays =
+    document.getElementById("businessDays");
+
+  const weekendDays =
+    document.getElementById("weekendDays");
+
+  const weeks =
+    document.getElementById("weeks");
+
+  const workingWeekResult =
+    document.getElementById("workingWeekResult");
+
+  const holidaysExcluded =
+    document.getElementById("holidaysExcluded");
+
+
+
+  function getTodayISO() {
+
+    const today = new Date();
+
+    const year =
+      today.getFullYear();
+
+    const month =
+      String(today.getMonth() + 1)
+        .padStart(2, "0");
+
+    const day =
+      String(today.getDate())
+        .padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+
+  }
+
+
+
+  function parseLocalDate(value) {
+
+    const parts =
+      value.split("-").map(Number);
+
+    return new Date(
+      parts[0],
+      parts[1] - 1,
+      parts[2]
+    );
+
+  }
+
+
+
+  function formatISO(date) {
+
+    const year =
+      date.getFullYear();
+
+    const month =
+      String(date.getMonth() + 1)
+        .padStart(2, "0");
+
+    const day =
+      String(date.getDate())
+        .padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+
+  }
+
+
+
+  function formatDate(date) {
+
+    return date.toLocaleDateString(
+      "en-US",
+      {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      }
+    );
+
+  }
+
+
+
+  function getHolidaySet() {
+
+    const holidaySet =
+      new Set();
+
+    const lines =
+      holidays.value
+        .split(/\r?\n/)
+        .map(line => line.trim())
+        .filter(Boolean);
+
+
+    for (const dateString of lines) {
+
+      if (
+        !/^\d{4}-\d{2}-\d{2}$/
+          .test(dateString)
+      ) {
+
+        throw new Error(
+          `Invalid holiday date: ${dateString}. Please use YYYY-MM-DD.`
+        );
+
+      }
+
+
+      const date =
+        parseLocalDate(dateString);
+
+
+      if (
+        formatISO(date) !== dateString
+      ) {
+
+        throw new Error(
+          `Invalid holiday date: ${dateString}.`
+        );
+
+      }
+
+
+      holidaySet.add(dateString);
+
+    }
+
+
+    return holidaySet;
+
+  }
+
+
+
+  function isWorkingDay(
+    date,
+    workingWeek
+  ) {
+
+    const day =
+      date.getDay();
+
+
+    if (
+      workingWeek === "mon-fri"
+    ) {
+
+      return day >= 1 && day <= 5;
+
+    }
+
+
+    if (
+      workingWeek === "mon-sat"
+    ) {
+
+      return day >= 1 && day <= 6;
+
+    }
+
+
+    return false;
+
+  }
+
+
+
+  function calculate() {
+
+    errorMessage.textContent = "";
+
+    result.style.display = "none";
+
+
+    if (!startDate.value) {
+
+      errorMessage.textContent =
+        "Please select a start date.";
+
+      return;
+
+    }
+
+
+    if (!endDate.value) {
+
+      errorMessage.textContent =
+        "Please select an end date.";
+
+      return;
+
+    }
+
+
+    const start =
+      parseLocalDate(startDate.value);
+
+    const end =
+      parseLocalDate(endDate.value);
+
+
+    if (start > end) {
+
+      errorMessage.textContent =
+        "Please make sure the end date is on or after the start date.";
+
+      return;
+
+    }
+
+
+    const workingWeek =
+      document.querySelector(
+        'input[name="workingWeek"]:checked'
+      ).value;
+
+
+    let holidaySet;
+
+
+    try {
+
+      holidaySet =
+        getHolidaySet();
+
+    } catch (error) {
+
+      errorMessage.textContent =
+        error.message;
+
+      return;
+
+    }
+
+
+
+    const millisecondsPerDay =
+      24 * 60 * 60 * 1000;
+
+
+    const difference =
+      Math.round(
+        (end - start) /
+        millisecondsPerDay
+      );
+
+
+    const inclusive =
+      difference + 1;
+
+
+    let businessCount = 0;
+
+    let weekendCount = 0;
+
+    let holidayCount = 0;
+
+
+    const current =
+      new Date(start);
+
+
+    while (current <= end) {
+
+      const iso =
+        formatISO(current);
+
+
+      if (
+        holidaySet.has(iso)
+      ) {
+
+        holidayCount++;
+
+      }
+      else if (
+        isWorkingDay(
+          current,
+          workingWeek
+        )
+      ) {
+
+        businessCount++;
+
+      }
+      else {
+
+        weekendCount++;
+
+      }
+
+
+      current.setDate(
+        current.getDate() + 1
+      );
+
+    }
+
+
+
+    const wholeWeeks =
+      Math.floor(difference / 7);
+
+    const remainingDays =
+      difference % 7;
+
+
+
+    calendarDays.textContent =
+      difference;
+
+
+    inclusiveDays.textContent =
+      inclusive;
+
+
+    businessDays.textContent =
+      businessCount;
+
+
+    weekendDays.textContent =
+      weekendCount;
+
+
+    weeks.textContent =
+      `${wholeWeeks} week${wholeWeeks !== 1 ? "s" : ""} ${remainingDays} day${remainingDays !== 1 ? "s" : ""}`;
+
+
+    workingWeekResult.textContent =
+      workingWeek === "mon-fri"
+        ? "Monday - Friday"
+        : "Monday - Saturday";
+
+
+    holidaysExcluded.textContent =
+      holidayCount;
+
+
+    result.style.display =
+      "block";
+
+
+    result.classList.remove(
+      "result-show"
+    );
+
+
+    void result.offsetWidth;
+
+
+    result.classList.add(
+      "result-show"
+    );
+
+  }
+
+
+
+  function clearCalculator() {
+
+    const today =
+      new Date();
+
+    const future =
+      new Date(today);
+
+    future.setDate(
+      future.getDate() + 30
+    );
+
+
+    startDate.value =
+      formatISO(today);
+
+
+    endDate.value =
+      formatISO(future);
+
+
+    holidays.value =
+      "";
+
+
+    document.querySelector(
+      'input[name="workingWeek"][value="mon-fri"]'
+    ).checked = true;
+
+
+    errorMessage.textContent =
+      "";
+
+
+    result.style.display =
+      "none";
+
+  }
+
+
+
+  async function copyResult() {
+
+    const text =
+`Days Between Dates Results
+Calendar Days: ${calendarDays.textContent}
+Inclusive Days: ${inclusiveDays.textContent}
+Business Days: ${businessDays.textContent}
+Weekend Days: ${weekendDays.textContent}
+Weeks: ${weeks.textContent}
+Holidays Excluded: ${holidaysExcluded.textContent}`;
+
+
+    try {
+
+      await navigator.clipboard
+        .writeText(text);
+
+
+      const original =
+        copyBtn.textContent;
+
+
+      copyBtn.textContent =
+        "Copied!";
+
+
+      setTimeout(() => {
+
+        copyBtn.textContent =
+          original;
+
+      }, 1500);
+
+
+    } catch {
+
+      errorMessage.textContent =
+        "Unable to copy the results.";
+
+    }
+
+  }
+
+
+
+  calculateBtn.addEventListener(
+    "click",
+    calculate
+  );
+
+
+  clearBtn.addEventListener(
+    "click",
+    clearCalculator
+  );
+
+
+  copyBtn.addEventListener(
+    "click",
+    copyResult
+  );
+
+
+
+  /* Default dates */
+
+  const today =
+    new Date();
+
+
+  const future =
+    new Date(today);
+
+
+  future.setDate(
+    future.getDate() + 30
+  );
+
+
+  startDate.value =
+    formatISO(today);
+
+
+  endDate.value =
+    formatISO(future);
+
+});
+
+</script>
+
+
+</body>
+</html>
