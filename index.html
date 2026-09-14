@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Day Calculator - Calculate Working Days</title>
+  <meta name="description" content="Calculate business days between two dates, excluding weekends and optional holidays. Free, fast and easy business day calculator.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://umerfarooqkhan-seo.github.io/businessdaycalculate/">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo" href="./">Business Day Calculate</a>
+      <a class="nav-link" href="#how-it-works">How It Works</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">FREE ONLINE DATE CALCULATOR</p>
+        <h1>Business Day Calculator</h1>
+        <p class="hero-text">Calculate working days between two dates. Exclude weekends and add holidays for a more accurate result.</p>
+
+        <div class="calculator-card">
+          <div class="form-grid">
+            <div class="field">
+              <label for="startDate">Start date</label>
+              <input type="date" id="startDate">
+            </div>
+            <div class="field">
+              <label for="endDate">End date</label>
+              <input type="date" id="endDate">
+            </div>
+          </div>
+
+          <div class="options">
+            <h2>Working week</h2>
+            <div class="week-options">
+              <label><input type="radio" name="week" value="mon-fri" checked> Monday - Friday</label>
+              <label><input type="radio" name="week" value="mon-sat"> Monday - Saturday</label>
+              <label><input type="radio" name="week" value="custom"> Custom</label>
+            </div>
+
+            <div id="customDays" class="custom-days hidden">
+              <label><input type="checkbox" value="1"> Mon</label>
+              <label><input type="checkbox" value="2"> Tue</label>
+              <label><input type="checkbox" value="3"> Wed</label>
+              <label><input type="checkbox" value="4"> Thu</label>
+              <label><input type="checkbox" value="5"> Fri</label>
+              <label><input type="checkbox" value="6"> Sat</label>
+              <label><input type="checkbox" value="0"> Sun</label>
+            </div>
+
+            <h2>Date counting</h2>
+            <div class="checks">
+              <label><input type="checkbox" id="includeStart" checked> Include start date</label>
+              <label><input type="checkbox" id="includeEnd" checked> Include end date</label>
+            </div>
+
+            <h2>Holidays</h2>
+            <p class="small">Optional. Add one holiday date per line.</p>
+            <textarea id="holidays" rows="4" placeholder="2026-12-25&#10;2026-12-28"></textarea>
+          </div>
+
+          <div class="actions">
+            <button id="calculateBtn" class="primary">Calculate Business Days</button>
+            <button id="clearBtn" class="secondary">Clear</button>
+          </div>
+
+          <div id="error" class="error hidden" role="alert"></div>
+
+          <section id="results" class="results hidden" aria-live="polite">
+            <h2>Your Results</h2>
+            <div class="result-grid">
+              <div class="result-box featured">
+                <span>Business Days</span>
+                <strong id="businessDays">0</strong>
+              </div>
+              <div class="result-box">
+                <span>Calendar Days</span>
+                <strong id="calendarDays">0</strong>
+              </div>
+              <div class="result-box">
+                <span>Weekend Days</span>
+                <strong id="weekendDays">0</strong>
+              </div>
+              <div class="result-box">
+                <span>Holidays Excluded</span>
+                <strong id="holidayDays">0</strong>
+              </div>
+            </div>
+            <button id="copyBtn" class="copy">Copy Results</button>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="content-section">
+      <div class="container content">
+        <h2>What is a business day?</h2>
+        <p>A business day is normally a weekday when businesses are open and work is carried out. In many countries, Monday through Friday are treated as business days, while Saturday and Sunday are excluded.</p>
+
+        <h2>How does the Business Day Calculator work?</h2>
+        <p>Enter a start date and an end date, choose your working week, and optionally enter holidays. The calculator counts the selected working days in the date range and excludes the dates you specify as holidays.</p>
+
+        <h2>Business days vs calendar days</h2>
+        <p>Calendar days include every day in a date range, including weekends and holidays. Business days only count the days that match your selected working schedule, making them useful for deadlines, delivery estimates, contracts and project planning.</p>
+
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq">
+          <details>
+            <summary>Does the calculator exclude weekends?</summary>
+            <p>Yes. By default, Saturday and Sunday are excluded. You can choose Monday to Saturday or create a custom working week.</p>
+          </details>
+          <details>
+            <summary>Can I exclude public holidays?</summary>
+            <p>Yes. Enter holiday dates in the optional holiday box, with one date per line.</p>
+          </details>
+          <details>
+            <summary>Can I include the start and end dates?</summary>
+            <p>Yes. You can independently include or exclude both the start date and end date.</p>
+          </details>
+          <details>
+            <summary>Is this calculator free?</summary>
+            <p>Yes. The calculator is free to use and runs directly in your browser.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Business Day Calculate. Free online business day calculator.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

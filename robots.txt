@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://umerfarooqkhan-seo.github.io/businessdaycalculate/sitemap.xml
