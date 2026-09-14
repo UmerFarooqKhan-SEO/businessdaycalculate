@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Subtract Business Days Calculator - Working Days</title>
+
+  <meta name="description" content="Free subtract business days calculator. Subtract working days from a date while excluding weekends and holidays.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Umer Farooq Khan">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="canonical" href="https://umerfarooqkhan-seo.github.io/businessdaycalculate/subtract-business-days.html">
+
+  <meta property="og:title" content="Subtract Business Days Calculator">
+  <meta property="og:description" content="Calculate a date by subtracting business days while excluding weekends and holidays.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://umerfarooqkhan-seo.github.io/businessdaycalculate/subtract-business-days.html">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Subtract Business Days Calculator">
+  <meta name="twitter:description" content="Calculate dates by subtracting working days, weekends and holidays.">
+
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Subtract Business Days Calculator",
+    "url": "https://umerfarooqkhan-seo.github.io/businessdaycalculate/subtract-business-days.html",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "description": "A free calculator for subtracting business days from a date while excluding weekends and holidays.",
+    "author": {
+      "@type": "Person",
+      "name": "Umer Farooq Khan"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a business day?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A business day is normally a weekday when businesses operate. The standard working week is Monday through Friday."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the subtract business days calculator work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enter a starting date and the number of business days to subtract. The calculator moves backwards while skipping weekends and any holidays you provide."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this calculator exclude holidays?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can enter holiday dates and the calculator will exclude them from the business-day calculation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use Monday to Saturday as my working week?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can choose either Monday to Friday or Monday to Saturday as your working week."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="index.html" class="logo">
+      Business Day Calculate
+    </a>
+
+    <nav>
+      <a href="index.html">Calculator</a>
+      <a href="index.html#how-it-works">How It Works</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+
+      <h1>Subtract Business Days Calculator</h1>
+
+      <p>
+        Calculate a date by subtracting working days from a starting date.
+        Weekends and holidays are automatically excluded.
+      </p>
+
+    </div>
+  </section>
+
+
+  <section class="calculator-section">
+    <div class="container">
+
+      <div class="calculator-card">
+
+        <div class="form-group">
+          <label for="startDate">
+            Start Date
+          </label>
+
+          <input type="date" id="startDate">
+        </div>
+
+
+        <div class="form-group">
+          <label for="businessDays">
+            Business Days to Subtract
+          </label>
+
+          <input
+            type="number"
+            id="businessDays"
+            min="0"
+            step="1"
+            value="10"
+            placeholder="Example: 10"
+          >
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Working Week
+          </label>
+
+          <div class="radio-group">
+
+            <label class="radio-option">
+              <input
+                type="radio"
+                name="workingWeek"
+                value="mon-fri"
+                checked
+              >
+              Monday - Friday
+            </label>
+
+            <label class="radio-option">
+              <input
+                type="radio"
+                name="workingWeek"
+                value="mon-sat"
+              >
+              Monday - Saturday
+            </label>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="holidays">
+            Holidays
+            <span class="optional">(optional)</span>
+          </label>
+
+          <textarea
+            id="holidays"
+            rows="5"
+            placeholder="Enter one holiday per line, for example:
+2026-12-25
+2026-12-26"
+          ></textarea>
+
+          <small>
+            Use the format YYYY-MM-DD.
+          </small>
+
+        </div>
+
+
+        <div class="button-group">
+
+          <button
+            type="button"
+            id="calculateBtn"
+            class="primary-btn"
+          >
+            Subtract Business Days
+          </button>
+
+          <button
+            type="button"
+            id="clearBtn"
+            class="secondary-btn"
+          >
+            Clear
+          </button>
+
+        </div>
+
+
+        <div
+          id="errorMessage"
+          class="error-message"
+          role="alert"
+          aria-live="polite"
+        ></div>
+
+
+        <div
+          id="result"
+          class="result-card"
+          style="display:none;"
+        >
+
+          <div class="result-main">
+
+            <span class="result-label">
+              Result Date
+            </span>
+
+            <strong id="resultDate"></strong>
+
+          </div>
+
+          <div class="result-details">
+
+            <div>
+              <span>Starting Date</span>
+              <strong id="resultStart"></strong>
+            </div>
+
+            <div>
+              <span>Business Days Subtracted</span>
+              <strong id="resultDays"></strong>
+            </div>
+
+            <div>
+              <span>Working Week</span>
+              <strong id="resultWeek"></strong>
+            </div>
+
+          </div>
+
+          <button
+            type="button"
+            id="copyBtn"
+            class="copy-btn"
+          >
+            Copy Result
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="content-section">
+    <div class="container">
+
+      <h2>What Is a Subtract Business Days Calculator?</h2>
+
+      <p>
+        A subtract business days calculator helps you find an earlier date
+        by removing a specific number of working days from a starting date.
+        Unlike a normal date calculator, it does not count weekends as
+        working days.
+      </p>
+
+      <p>
+        This can be useful for calculating deadlines, project schedules,
+        delivery dates, payment dates, contract periods and other
+        business-related dates.
+      </p>
+
+
+      <h2>How to Subtract Business Days</h2>
+
+      <ol>
+        <li>Choose your starting date.</li>
+        <li>Enter the number of business days to subtract.</li>
+        <li>Select your working week.</li>
+        <li>Add any holidays that should be excluded.</li>
+        <li>Click <strong>Subtract Business Days</strong>.</li>
+      </ol>
+
+
+      <h2>Example</h2>
+
+      <p>
+        Suppose your starting date is Monday, September 28, 2026 and you
+        need to subtract 10 business days using a Monday-to-Friday working
+        week.
+      </p>
+
+      <p>
+        The calculator moves backwards through the calendar and skips
+        Saturday and Sunday. The resulting date is Monday, September 14,
+        2026.
+      </p>
+
+
+      <h2>Business Days vs Calendar Days</h2>
+
+      <p>
+        Calendar days include every day of the week, including weekends.
+        Business days normally include Monday through Friday, although
+        some organisations operate on Saturdays as well.
+      </p>
+
+      <p>
+        This calculator allows you to choose between a Monday-to-Friday
+        and Monday-to-Saturday working week.
+      </p>
+
+
+      <h2>Why Use This Calculator?</h2>
+
+      <ul>
+        <li>Calculate project deadlines.</li>
+        <li>Work backwards from delivery dates.</li>
+        <li>Calculate business-related deadlines.</li>
+        <li>Plan payment and processing dates.</li>
+        <li>Exclude weekends automatically.</li>
+        <li>Exclude custom holidays.</li>
+        <li>Save time compared with manually counting dates.</li>
+      </ul>
+
+
+      <h2 id="faq">Frequently Asked Questions</h2>
+
+      <div class="faq">
+
+        <details>
+          <summary>
+            What is a business day?
+          </summary>
+
+          <p>
+            A business day is normally a weekday when businesses operate.
+            The standard working week is Monday through Friday.
+          </p>
+        </details>
+
+
+        <details>
+          <summary>
+            How does the calculator subtract business days?
+          </summary>
+
+          <p>
+            The calculator moves backwards one calendar day at a time and
+            counts only days that fall within your selected working week.
+            Holidays entered by you are also excluded.
+          </p>
+        </details>
+
+
+        <details>
+          <summary>
+            Does it exclude holidays?
+          </summary>
+
+          <p>
+            Yes. Enter your holiday dates in YYYY-MM-DD format, with one
+            date per line.
+          </p>
+        </details>
+
+
+        <details>
+          <summary>
+            Can I use Monday to Saturday?
+          </summary>
+
+          <p>
+            Yes. Select Monday to Saturday if Saturday is part of your
+            organisation's working week.
+          </p>
+        </details>
+
+
+        <details>
+          <summary>
+            What happens if I subtract zero business days?
+          </summary>
+
+          <p>
+            The result remains the same as the starting date.
+          </p>
+        </details>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="container">
+
+    <div class="footer-links">
+
+      <a href="index.html">Calculator</a>
+      <a href="add-business-days.html">Add Business Days</a>
+      <a href="subtract-business-days.html">Subtract Business Days</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+
+    </div>
+
+    <p>
+      © 2026 Business Day Calculate. All rights reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const startDate = document.getElementById("startDate");
+  const businessDays = document.getElementById("businessDays");
+  const holidays = document.getElementById("holidays");
+
+  const calculateBtn = document.getElementById("calculateBtn");
+  const clearBtn = document.getElementById("clearBtn");
+  const copyBtn = document.getElementById("copyBtn");
+
+  const result = document.getElementById("result");
+  const resultDate = document.getElementById("resultDate");
+  const resultStart = document.getElementById("resultStart");
+  const resultDays = document.getElementById("resultDays");
+  const resultWeek = document.getElementById("resultWeek");
+  const errorMessage = document.getElementById("errorMessage");
+
+
+  function getTodayISO() {
+
+    const today = new Date();
+
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+  }
+
+
+  function parseLocalDate(value) {
+
+    const parts = value.split("-").map(Number);
+
+    return new Date(
+      parts[0],
+      parts[1] - 1,
+      parts[2]
+    );
+  }
+
+
+  function formatISO(date) {
+
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+  }
+
+
+  function formatDate(date) {
+
+    return date.toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    });
+
+  }
+
+
+  function isWorkingDay(date, workingWeek) {
+
+    const day = date.getDay();
+
+    if (workingWeek === "mon-fri") {
+
+      return day >= 1 && day <= 5;
+
+    }
+
+    if (workingWeek === "mon-sat") {
+
+      return day >= 1 && day <= 6;
+
+    }
+
+    return false;
+  }
+
+
+  function getHolidaySet() {
+
+    const holidaySet = new Set();
+
+    const lines = holidays.value
+      .split(/\r?\n/)
+      .map(line => line.trim())
+      .filter(Boolean);
+
+
+    for (const dateString of lines) {
+
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
+
+        throw new Error(
+          `Invalid holiday date: ${dateString}. Please use YYYY-MM-DD.`
+        );
+
+      }
+
+      const date = parseLocalDate(dateString);
+
+      if (formatISO(date) !== dateString) {
+
+        throw new Error(
+          `Invalid holiday date: ${dateString}.`
+        );
+
+      }
+
+      holidaySet.add(dateString);
+
+    }
+
+    return holidaySet;
+  }
+
+
+  function calculate() {
+
+    errorMessage.textContent = "";
+    result.style.display = "none";
+
+
+    if (!startDate.value) {
+
+      errorMessage.textContent =
+        "Please select a starting date.";
+
+      return;
+    }
+
+
+    const daysToSubtract =
+      Number(businessDays.value);
+
+
+    if (
+      !Number.isInteger(daysToSubtract) ||
+      daysToSubtract < 0
+    ) {
+
+      errorMessage.textContent =
+        "Please enter a valid number of business days.";
+
+      return;
+    }
+
+
+    const workingWeek =
+      document.querySelector(
+        'input[name="workingWeek"]:checked'
+      ).value;
+
+
+    let holidaySet;
+
+    try {
+
+      holidaySet = getHolidaySet();
+
+    } catch (error) {
+
+      errorMessage.textContent = error.message;
+
+      return;
+    }
+
+
+    let currentDate =
+      parseLocalDate(startDate.value);
+
+    let remaining =
+      daysToSubtract;
+
+
+    while (remaining > 0) {
+
+      currentDate.setDate(
+        currentDate.getDate() - 1
+      );
+
+
+      if (
+        isWorkingDay(currentDate, workingWeek) &&
+        !holidaySet.has(formatISO(currentDate))
+      ) {
+
+        remaining--;
+
+      }
+
+    }
+
+
+    resultDate.textContent =
+      formatDate(currentDate);
+
+    resultStart.textContent =
+      formatDate(parseLocalDate(startDate.value));
+
+    resultDays.textContent =
+      daysToSubtract;
+
+    resultWeek.textContent =
+      workingWeek === "mon-fri"
+        ? "Monday - Friday"
+        : "Monday - Saturday";
+
+
+    result.style.display = "block";
+
+    result.classList.remove("result-show");
+
+    void result.offsetWidth;
+
+    result.classList.add("result-show");
+
+  }
+
+
+  function clearCalculator() {
+
+    startDate.value = getTodayISO();
+
+    businessDays.value = 10;
+
+    holidays.value = "";
+
+    document.querySelector(
+      'input[name="workingWeek"][value="mon-fri"]'
+    ).checked = true;
+
+    errorMessage.textContent = "";
+
+    result.style.display = "none";
+
+  }
+
+
+  async function copyResult() {
+
+    const text =
+      `Subtract Business Days Result: ${resultDate.textContent}`;
+
+    try {
+
+      await navigator.clipboard.writeText(text);
+
+      const originalText =
+        copyBtn.textContent;
+
+      copyBtn.textContent =
+        "Copied!";
+
+      setTimeout(() => {
+
+        copyBtn.textContent =
+          originalText;
+
+      }, 1500);
+
+    } catch {
+
+      errorMessage.textContent =
+        "Unable to copy the result.";
+
+    }
+
+  }
+
+
+  calculateBtn.addEventListener(
+    "click",
+    calculate
+  );
+
+
+  clearBtn.addEventListener(
+    "click",
+    clearCalculator
+  );
+
+
+  copyBtn.addEventListener(
+    "click",
+    copyResult
+  );
+
+
+  startDate.value = getTodayISO();
+
+});
+</script>
+
+</body>
+</html>
