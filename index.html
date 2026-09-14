@@ -1,143 +1,583 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Business Day Calculator - Calculate Working Days</title>
-  <meta name="description" content="Calculate business days between two dates, excluding weekends and optional holidays. Free, fast and easy business day calculator.">
-  <meta name="robots" content="index, follow">
+
+  <title>Business Day Calculator - Working Days Calculator</title>
+
+  <meta
+    name="description"
+    content="Free business day calculator to count working days between two dates. Exclude weekends, holidays, and customise your working week."
+  >
+
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Umer Farooq Khan">
+
   <link rel="canonical" href="https://umerfarooqkhan-seo.github.io/businessdaycalculate/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Business Day Calculator - Working Days Calculator">
+  <meta
+    property="og:description"
+    content="Calculate business days and working days between two dates. Exclude weekends and holidays for an accurate result."
+  >
+  <meta property="og:url" content="https://umerfarooqkhan-seo.github.io/businessdaycalculate/">
+  <meta property="og:site_name" content="Business Day Calculate">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Business Day Calculator">
+  <meta
+    name="twitter:description"
+    content="Calculate working days between two dates while excluding weekends and holidays."
+  >
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#2563eb">
+
   <link rel="stylesheet" href="style.css">
+
+  <!-- WebSite structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Business Day Calculate",
+    "url": "https://umerfarooqkhan-seo.github.io/businessdaycalculate/",
+    "description": "Free online business day and working days calculator."
+  }
+  </script>
+
+  <!-- WebApplication structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Business Day Calculator",
+    "url": "https://umerfarooqkhan-seo.github.io/businessdaycalculate/",
+    "description": "Calculate business days between two dates while excluding weekends and optional holidays.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- FAQ structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does the calculator exclude weekends?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. By default, Saturday and Sunday are excluded. You can also choose Monday to Saturday or create a custom working week."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I exclude public holidays?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Enter holiday dates in the holiday box, with one date per line, and those dates will be excluded when they fall within your selected working schedule."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I include the start and end dates?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can independently choose whether the start date and end date are included in the calculation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the Business Day Calculator free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The Business Day Calculator is free to use and performs calculations directly in your browser."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
+
 <body>
+
   <header class="site-header">
     <div class="container nav">
-      <a class="logo" href="./">Business Day Calculate</a>
-      <a class="nav-link" href="#how-it-works">How It Works</a>
+
+      <a class="logo" href="./" aria-label="Business Day Calculate home">
+        Business Day Calculate
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a class="nav-link" href="#calculator">Calculator</a>
+        <a class="nav-link" href="#how-it-works">How It Works</a>
+        <a class="nav-link" href="#faq">FAQ</a>
+      </nav>
+
     </div>
   </header>
 
+
   <main>
+
+    <!-- HERO -->
     <section class="hero">
       <div class="container">
-        <p class="eyebrow">FREE ONLINE DATE CALCULATOR</p>
-        <h1>Business Day Calculator</h1>
-        <p class="hero-text">Calculate working days between two dates. Exclude weekends and add holidays for a more accurate result.</p>
 
-        <div class="calculator-card">
+        <p class="eyebrow">FREE ONLINE WORKING DAYS CALCULATOR</p>
+
+        <h1>Business Day Calculator</h1>
+
+        <p class="hero-text">
+          Calculate the number of business days between two dates.
+          Exclude weekends and holidays to get an accurate working-day result.
+        </p>
+
+
+        <!-- CALCULATOR -->
+        <div id="calculator" class="calculator-card">
+
+          <div class="calculator-heading">
+            <h2>Calculate Business Days</h2>
+            <p>
+              Select your dates and working schedule to calculate business days.
+            </p>
+          </div>
+
+
           <div class="form-grid">
+
             <div class="field">
               <label for="startDate">Start date</label>
-              <input type="date" id="startDate">
+              <input
+                type="date"
+                id="startDate"
+                aria-describedby="startDateHelp"
+              >
+              <span id="startDateHelp" class="field-help">
+                Choose the first date.
+              </span>
             </div>
+
             <div class="field">
               <label for="endDate">End date</label>
-              <input type="date" id="endDate">
+              <input
+                type="date"
+                id="endDate"
+                aria-describedby="endDateHelp"
+              >
+              <span id="endDateHelp" class="field-help">
+                Choose the final date.
+              </span>
             </div>
+
           </div>
 
+
+          <!-- WORKING WEEK -->
           <div class="options">
+
             <h2>Working week</h2>
+
             <div class="week-options">
-              <label><input type="radio" name="week" value="mon-fri" checked> Monday - Friday</label>
-              <label><input type="radio" name="week" value="mon-sat"> Monday - Saturday</label>
-              <label><input type="radio" name="week" value="custom"> Custom</label>
+
+              <label>
+                <input
+                  type="radio"
+                  name="week"
+                  value="mon-fri"
+                  checked
+                >
+                Monday - Friday
+              </label>
+
+              <label>
+                <input
+                  type="radio"
+                  name="week"
+                  value="mon-sat"
+                >
+                Monday - Saturday
+              </label>
+
+              <label>
+                <input
+                  type="radio"
+                  name="week"
+                  value="custom"
+                >
+                Custom
+              </label>
+
             </div>
 
-            <div id="customDays" class="custom-days hidden">
-              <label><input type="checkbox" value="1"> Mon</label>
-              <label><input type="checkbox" value="2"> Tue</label>
-              <label><input type="checkbox" value="3"> Wed</label>
-              <label><input type="checkbox" value="4"> Thu</label>
-              <label><input type="checkbox" value="5"> Fri</label>
-              <label><input type="checkbox" value="6"> Sat</label>
-              <label><input type="checkbox" value="0"> Sun</label>
+
+            <div
+              id="customDays"
+              class="custom-days hidden"
+              aria-label="Select custom working days"
+            >
+
+              <label>
+                <input type="checkbox" value="1">
+                Mon
+              </label>
+
+              <label>
+                <input type="checkbox" value="2">
+                Tue
+              </label>
+
+              <label>
+                <input type="checkbox" value="3">
+                Wed
+              </label>
+
+              <label>
+                <input type="checkbox" value="4">
+                Thu
+              </label>
+
+              <label>
+                <input type="checkbox" value="5">
+                Fri
+              </label>
+
+              <label>
+                <input type="checkbox" value="6">
+                Sat
+              </label>
+
+              <label>
+                <input type="checkbox" value="0">
+                Sun
+              </label>
+
             </div>
 
+
+            <!-- DATE COUNTING -->
             <h2>Date counting</h2>
+
             <div class="checks">
-              <label><input type="checkbox" id="includeStart" checked> Include start date</label>
-              <label><input type="checkbox" id="includeEnd" checked> Include end date</label>
+
+              <label>
+                <input
+                  type="checkbox"
+                  id="includeStart"
+                  checked
+                >
+                Include start date
+              </label>
+
+              <label>
+                <input
+                  type="checkbox"
+                  id="includeEnd"
+                  checked
+                >
+                Include end date
+              </label>
+
             </div>
 
+
+            <!-- HOLIDAYS -->
             <h2>Holidays</h2>
-            <p class="small">Optional. Add one holiday date per line.</p>
-            <textarea id="holidays" rows="4" placeholder="2026-12-25&#10;2026-12-28"></textarea>
+
+            <p class="small">
+              Optional. Add one holiday date per line.
+            </p>
+
+            <textarea
+              id="holidays"
+              rows="4"
+              placeholder="2026-12-25&#10;2026-12-28"
+              aria-label="Holiday dates"
+            ></textarea>
+
           </div>
 
+
+          <!-- BUTTONS -->
           <div class="actions">
-            <button id="calculateBtn" class="primary">Calculate Business Days</button>
-            <button id="clearBtn" class="secondary">Clear</button>
+
+            <button
+              id="calculateBtn"
+              class="primary"
+              type="button"
+            >
+              Calculate Business Days
+            </button>
+
+            <button
+              id="clearBtn"
+              class="secondary"
+              type="button"
+            >
+              Clear
+            </button>
+
           </div>
 
-          <div id="error" class="error hidden" role="alert"></div>
 
-          <section id="results" class="results hidden" aria-live="polite">
+          <!-- ERROR -->
+          <div
+            id="error"
+            class="error hidden"
+            role="alert"
+            aria-live="assertive"
+          ></div>
+
+
+          <!-- RESULTS -->
+          <section
+            id="results"
+            class="results hidden"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+
             <h2>Your Results</h2>
+
             <div class="result-grid">
+
               <div class="result-box featured">
                 <span>Business Days</span>
                 <strong id="businessDays">0</strong>
               </div>
+
               <div class="result-box">
                 <span>Calendar Days</span>
                 <strong id="calendarDays">0</strong>
               </div>
+
               <div class="result-box">
                 <span>Weekend Days</span>
                 <strong id="weekendDays">0</strong>
               </div>
+
               <div class="result-box">
                 <span>Holidays Excluded</span>
                 <strong id="holidayDays">0</strong>
               </div>
+
             </div>
-            <button id="copyBtn" class="copy">Copy Results</button>
+
+            <button
+              id="copyBtn"
+              class="copy"
+              type="button"
+            >
+              Copy Results
+            </button>
+
           </section>
+
         </div>
+
       </div>
     </section>
 
+
+    <!-- INFORMATION -->
     <section id="how-it-works" class="content-section">
+
       <div class="container content">
+
+        <p class="section-label">BUSINESS DAYS GUIDE</p>
+
         <h2>What is a business day?</h2>
-        <p>A business day is normally a weekday when businesses are open and work is carried out. In many countries, Monday through Friday are treated as business days, while Saturday and Sunday are excluded.</p>
+
+        <p>
+          A business day is generally a day when businesses and organisations
+          operate. In many countries, Monday through Friday are considered
+          business days, while Saturday and Sunday are treated as weekends.
+          However, working schedules can vary between businesses, industries
+          and countries.
+        </p>
+
 
         <h2>How does the Business Day Calculator work?</h2>
-        <p>Enter a start date and an end date, choose your working week, and optionally enter holidays. The calculator counts the selected working days in the date range and excludes the dates you specify as holidays.</p>
+
+        <p>
+          Enter your start date and end date, select your working week and
+          optionally enter holidays. The calculator checks each date in the
+          selected range and counts the days that match your chosen working
+          schedule.
+        </p>
+
+        <p>
+          You can also choose whether to include the start date and end date.
+          This makes the calculator useful for project planning, deadlines,
+          delivery estimates, contracts, payroll calculations and other
+          date-based tasks.
+        </p>
+
 
         <h2>Business days vs calendar days</h2>
-        <p>Calendar days include every day in a date range, including weekends and holidays. Business days only count the days that match your selected working schedule, making them useful for deadlines, delivery estimates, contracts and project planning.</p>
 
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq">
-          <details>
-            <summary>Does the calculator exclude weekends?</summary>
-            <p>Yes. By default, Saturday and Sunday are excluded. You can choose Monday to Saturday or create a custom working week.</p>
-          </details>
-          <details>
-            <summary>Can I exclude public holidays?</summary>
-            <p>Yes. Enter holiday dates in the optional holiday box, with one date per line.</p>
-          </details>
-          <details>
-            <summary>Can I include the start and end dates?</summary>
-            <p>Yes. You can independently include or exclude both the start date and end date.</p>
-          </details>
-          <details>
-            <summary>Is this calculator free?</summary>
-            <p>Yes. The calculator is free to use and runs directly in your browser.</p>
-          </details>
+        <p>
+          Calendar days include every day in a date range, including weekdays,
+          weekends and holidays. Business days only count dates that fall
+          within your selected working schedule.
+        </p>
+
+        <p>
+          For example, a seven-day calendar period can contain fewer business
+          days when weekends are excluded. Adding public holidays can reduce
+          the number further.
+        </p>
+
+
+        <h2>How to calculate working days between two dates</h2>
+
+        <ol>
+          <li>Choose the start date.</li>
+          <li>Choose the end date.</li>
+          <li>Select your working week.</li>
+          <li>Choose whether to include the start and end dates.</li>
+          <li>Add any holidays that should be excluded.</li>
+          <li>Click <strong>Calculate Business Days</strong>.</li>
+        </ol>
+
+
+        <h2>Why calculate business days?</h2>
+
+        <p>
+          Working-day calculations are useful when a deadline depends on
+          business operations rather than ordinary calendar days. Businesses
+          and individuals can use them for project schedules, delivery
+          estimates, invoices, contracts, service deadlines and planning.
+        </p>
+
+
+        <!-- FAQ -->
+        <div id="faq">
+
+          <h2>Frequently Asked Questions</h2>
+
+          <div class="faq">
+
+            <details>
+              <summary>
+                Does the calculator exclude weekends?
+              </summary>
+
+              <p>
+                Yes. By default, Saturday and Sunday are excluded.
+                You can also select Monday to Saturday or create a custom
+                working week.
+              </p>
+            </details>
+
+
+            <details>
+              <summary>
+                Can I exclude public holidays?
+              </summary>
+
+              <p>
+                Yes. Enter holiday dates in the optional holiday box,
+                with one date per line.
+              </p>
+            </details>
+
+
+            <details>
+              <summary>
+                Can I include the start and end dates?
+              </summary>
+
+              <p>
+                Yes. You can independently include or exclude both the
+                start date and end date.
+              </p>
+            </details>
+
+
+            <details>
+              <summary>
+                Is this Business Day Calculator free?
+              </summary>
+
+              <p>
+                Yes. The calculator is completely free to use and runs
+                directly in your browser.
+              </p>
+            </details>
+
+
+            <details>
+              <summary>
+                What is the difference between business days and calendar days?
+              </summary>
+
+              <p>
+                Calendar days include every day in the date range.
+                Business days only include dates that match your selected
+                working schedule.
+              </p>
+            </details>
+
+
+            <details>
+              <summary>
+                Can I use a custom working week?
+              </summary>
+
+              <p>
+                Yes. Select Custom and choose the individual days that
+                should be treated as working days.
+              </p>
+            </details>
+
+          </div>
+
         </div>
+
       </div>
+
     </section>
+
   </main>
 
+
   <footer>
+
     <div class="container">
-      <p>© 2026 Business Day Calculate. Free online business day calculator.</p>
+
+      <p>
+        © 2026 Business Day Calculate. Free online business day calculator.
+      </p>
+
+      <nav aria-label="Footer navigation">
+        <a href="#calculator">Calculator</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
     </div>
+
   </footer>
 
+
   <script src="script.js"></script>
+
 </body>
 </html>
+```
