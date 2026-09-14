@@ -968,3 +968,71 @@ body::after {
     grid-template-columns: 1fr;
   }
 }
+
+/* How to Use Calculator */
+.how-to-use {
+  margin: 50px 0;
+}
+
+.how-to-use > h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.steps {
+  max-width: 850px;
+  margin: 0 auto;
+  display: grid;
+  gap: 18px;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 22px 24px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.step:hover {
+  transform: translateX(5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+}
+
+.step-number {
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 700;
+}
+
+.step h3 {
+  margin: 0 0 6px;
+}
+
+.step p {
+  margin: 0;
+  color: #666;
+  line-height: 1.6;
+}
+
+@media (max-width: 550px) {
+  .step {
+    padding: 18px;
+  }
+
+  .step-number {
+    flex-basis: 34px;
+    width: 34px;
+    height: 34px;
+  }
+}
