@@ -917,3 +917,54 @@ body::after {
     transform: translate(25px, 20px) scale(1.08);
   }
 }
+
+/* Why Use This Calculator */
+.why-use {
+  margin: 50px 0;
+}
+
+.why-use > h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.why-use-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.why-card {
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+.why-card h3 {
+  margin: 0 0 12px;
+}
+
+.why-card p {
+  margin: 0;
+  color: #666;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .why-use-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  .why-use-grid {
+    grid-template-columns: 1fr;
+  }
+}
