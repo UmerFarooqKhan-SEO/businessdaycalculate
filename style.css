@@ -871,3 +871,49 @@ button:hover,
 .btn:hover {
   box-shadow: 0 8px 20px rgba(37, 99, 235, 0.18);
 }
+
+/* Subtle animated background glow */
+
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  width: 420px;
+  height: 420px;
+  top: -180px;
+  right: -140px;
+  background: rgba(37, 99, 235, 0.08);
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: -1;
+  animation: backgroundFloat 8s ease-in-out infinite alternate;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  width: 360px;
+  height: 360px;
+  bottom: -160px;
+  left: -120px;
+  background: rgba(37, 99, 235, 0.06);
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: -1;
+  animation: backgroundFloat 10s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes backgroundFloat {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(25px, 20px) scale(1.08);
+  }
+}
