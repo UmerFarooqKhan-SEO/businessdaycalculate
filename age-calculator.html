@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Age Calculator - Calculate Your Exact Age</title>
+
+  <meta name="description"
+        content="Free age calculator to calculate your exact age in years, months and days. Find total days, weeks, months and days until your next birthday.">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <meta name="author" content="Umer Farooq Khan">
+
+  <link rel="canonical"
+        href="https://umerfarooqkhan-seo.github.io/businessdaycalculate/age-calculator.html">
+
+  <meta property="og:title" content="Age Calculator - Calculate Your Exact Age">
+  <meta property="og:description"
+        content="Calculate your exact age in years, months and days, plus total days, weeks and your next birthday.">
+  <meta property="og:type" content="website">
+  <meta property="og:url"
+        content="https://umerfarooqkhan-seo.github.io/businessdaycalculate/age-calculator.html">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Age Calculator">
+  <meta name="twitter:description"
+        content="Calculate your exact age in years, months and days.">
+
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Age Calculator",
+    "url": "https://umerfarooqkhan-seo.github.io/businessdaycalculate/age-calculator.html",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Free age calculator that calculates exact age in years, months and days, total months, weeks, days and time until the next birthday.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How does the age calculator work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enter your date of birth and the date you want to calculate your age as of. The calculator determines your age in completed years, months and days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I calculate my age on a past date?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can select any date after your date of birth as the calculation date."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the calculator show my next birthday?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The calculator shows the date of your next birthday and the number of days remaining."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I calculate my age in total days?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The calculator shows your total number of elapsed calendar days."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="index.html" class="logo">
+      Business Day Calculate
+    </a>
+
+    <nav>
+      <a href="index.html">Calculator</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+
+      <h1>Age Calculator</h1>
+
+      <p class="hero-text">
+        Calculate your exact age in years, months and days.
+        You can also see your total months, weeks, days and next birthday.
+      </p>
+
+    </div>
+  </section>
+
+
+  <section class="calculator-section">
+    <div class="container">
+
+      <div class="calculator-card">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob">
+          </div>
+
+          <div class="form-group">
+            <label for="asOf">Calculate Age As Of</label>
+            <input type="date" id="asOf">
+          </div>
+
+        </div>
+
+
+        <div class="button-row">
+
+          <button id="calculateBtn" class="primary-btn">
+            Calculate Age
+          </button>
+
+          <button id="clearBtn" class="secondary-btn">
+            Clear
+          </button>
+
+        </div>
+
+
+        <div id="errorMessage" class="error-message" hidden></div>
+
+
+        <div id="results" class="results-grid" hidden>
+
+          <div class="result-card">
+            <span class="result-label">Exact Age</span>
+            <strong id="ageResult">-</strong>
+          </div>
+
+          <div class="result-card">
+            <span class="result-label">Total Months</span>
+            <strong id="monthsResult">-</strong>
+          </div>
+
+          <div class="result-card">
+            <span class="result-label">Total Weeks</span>
+            <strong id="weeksResult">-</strong>
+          </div>
+
+          <div class="result-card">
+            <span class="result-label">Total Days</span>
+            <strong id="daysResult">-</strong>
+          </div>
+
+          <div class="result-card">
+            <span class="result-label">Next Birthday</span>
+            <strong id="birthdayResult">-</strong>
+          </div>
+
+          <div class="result-card">
+            <span class="result-label">Days Until Birthday</span>
+            <strong id="birthdayDaysResult">-</strong>
+          </div>
+
+        </div>
+
+
+        <button id="copyBtn" class="copy-btn" hidden>
+          Copy Results
+        </button>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <section id="how-it-works" class="content-section">
+
+    <div class="container">
+
+      <h2>How Does the Age Calculator Work?</h2>
+
+      <p>
+        Enter your date of birth and choose the date you want to calculate
+        your age as of. The calculator then works out your exact age using
+        calendar years, months and days.
+      </p>
+
+      <p>
+        It also calculates the total number of completed months, elapsed
+        calendar days and approximate weeks between the two dates.
+      </p>
+
+
+      <h2>What Does Exact Age Mean?</h2>
+
+      <p>
+        Exact age describes how long you have lived using years, months and
+        days rather than simply counting the number of years.
+      </p>
+
+      <p>
+        For example, someone may be 26 years, 7 months and 30 days old on
+        a particular date. This provides more detail than simply saying
+        they are 26 years old.
+      </p>
+
+
+      <h2>How Is Age Calculated?</h2>
+
+      <p>
+        The calculator compares your date of birth with the selected
+        calculation date. It calculates completed years first, followed
+        by the remaining months and days.
+      </p>
+
+      <p>
+        Total days are calculated from the actual calendar difference
+        between the two dates, including leap years.
+      </p>
+
+
+      <h2>What Is the Next Birthday?</h2>
+
+      <p>
+        Your next birthday is the next occurrence of your birth date after
+        the selected calculation date. The calculator also shows how many
+        calendar days remain until that date.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section id="faq" class="faq-section">
+
+    <div class="container">
+
+      <h2>Frequently Asked Questions</h2>
+
+      <details>
+        <summary>How does the age calculator work?</summary>
+        <p>
+          Enter your date of birth and the date you want to calculate your
+          age as of. The calculator calculates your completed years, months
+          and days.
+        </p>
+      </details>
+
+      <details>
+        <summary>Can I calculate my age on a past date?</summary>
+        <p>
+          Yes. Select any date after your date of birth in the
+          "Calculate Age As Of" field.
+        </p>
+      </details>
+
+      <details>
+        <summary>Does the calculator show my next birthday?</summary>
+        <p>
+          Yes. It shows your next birthday and the number of days remaining
+          until it occurs.
+        </p>
+      </details>
+
+      <details>
+        <summary>Can I calculate my age in total days?</summary>
+        <p>
+          Yes. The result includes the total number of elapsed calendar
+          days between your date of birth and the selected date.
+        </p>
+      </details>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="container">
+
+    <div class="footer-links">
+
+      <a href="index.html">Calculator</a>
+      <a href="add-business-days.html">Add Business Days</a>
+      <a href="subtract-business-days.html">Subtract Business Days</a>
+      <a href="days-between-dates.html">Days Between Dates</a>
+      <a href="date-difference.html">Date Difference</a>
+      <a href="working-days-calculator.html">Working Days</a>
+      <a href="age-calculator.html">Age Calculator</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+
+    </div>
+
+    <p>
+      © 2026 Business Day Calculate. All rights reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+const dobInput = document.getElementById("dob");
+const asOfInput = document.getElementById("asOf");
+
+const calculateBtn = document.getElementById("calculateBtn");
+const clearBtn = document.getElementById("clearBtn");
+const copyBtn = document.getElementById("copyBtn");
+
+const results = document.getElementById("results");
+const errorMessage = document.getElementById("errorMessage");
+
+const ageResult = document.getElementById("ageResult");
+const monthsResult = document.getElementById("monthsResult");
+const weeksResult = document.getElementById("weeksResult");
+const daysResult = document.getElementById("daysResult");
+const birthdayResult = document.getElementById("birthdayResult");
+const birthdayDaysResult = document.getElementById("birthdayDaysResult");
+
+
+function parseLocalDate(value) {
+
+  const parts = value.split("-");
+
+  if (parts.length !== 3) {
+    return null;
+  }
+
+  const year = Number(parts[0]);
+  const month = Number(parts[1]) - 1;
+  const day = Number(parts[2]);
+
+  const date = new Date(year, month, day);
+
+  if (
+    date.getFullYear() !== year ||
+    date.getMonth() !== month ||
+    date.getDate() !== day
+  ) {
+    return null;
+  }
+
+  date.setHours(0, 0, 0, 0);
+
+  return date;
+}
+
+
+function formatDate(date) {
+
+  return date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+
+}
+
+
+function daysBetween(start, end) {
+
+  const millisecondsPerDay = 24 * 60 * 60 * 1000;
+
+  return Math.round(
+    (end.getTime() - start.getTime()) / millisecondsPerDay
+  );
+
+}
+
+
+function daysInMonth(year, month) {
+
+  return new Date(year, month + 1, 0).getDate();
+
+}
+
+
+function calculateAge(start, end) {
+
+  let years = end.getFullYear() - start.getFullYear();
+
+  let months = end.getMonth() - start.getMonth();
+
+  let days = end.getDate() - start.getDate();
+
+
+  if (days < 0) {
+
+    months--;
+
+    const previousMonthDays =
+      daysInMonth(
+        end.getFullYear(),
+        end.getMonth() - 1
+      );
+
+    days += previousMonthDays;
+
+  }
+
+
+  if (months < 0) {
+
+    years--;
+
+    months += 12;
+
+  }
+
+
+  return {
+    years,
+    months,
+    days
+  };
+
+}
+
+
+function getNextBirthday(dob, asOf) {
+
+  let birthdayYear = asOf.getFullYear();
+
+  let month = dob.getMonth();
+  let day = dob.getDate();
+
+
+  // Handle February 29 birthdays in non-leap years.
+  if (month === 1 && day === 29) {
+
+    const testDate = new Date(
+      birthdayYear,
+      month,
+      day
+    );
+
+    if (testDate.getMonth() !== month) {
+      day = 28;
+    }
+
+  }
+
+
+  let birthday = new Date(
+    birthdayYear,
+    month,
+    day
+  );
+
+  birthday.setHours(0, 0, 0, 0);
+
+
+  if (birthday <= asOf) {
+
+    birthdayYear++;
+
+    day = dob.getDate();
+
+
+    if (month === 1 && day === 29) {
+
+      const testDate = new Date(
+        birthdayYear,
+        month,
+        day
+      );
+
+      if (testDate.getMonth() !== month) {
+        day = 28;
+      }
+
+    }
+
+
+    birthday = new Date(
+      birthdayYear,
+      month,
+      day
+    );
+
+    birthday.setHours(0, 0, 0, 0);
+
+  }
+
+
+  return birthday;
+
+}
+
+
+function showError(message) {
+
+  errorMessage.textContent = message;
+  errorMessage.hidden = false;
+
+  results.hidden = true;
+  copyBtn.hidden = true;
+
+}
+
+
+function clearError() {
+
+  errorMessage.textContent = "";
+  errorMessage.hidden = true;
+
+}
+
+
+function calculate() {
+
+  clearError();
+
+
+  const dob = parseLocalDate(dobInput.value);
+  const asOf = parseLocalDate(asOfInput.value);
+
+
+  if (!dob || !asOf) {
+
+    showError(
+      "Please enter both your date of birth and calculation date."
+    );
+
+    return;
+
+  }
+
+
+  if (dob > asOf) {
+
+    showError(
+      "Date of birth cannot be after the calculation date."
+    );
+
+    return;
+
+  }
+
+
+  const age = calculateAge(dob, asOf);
+
+  const totalDays = daysBetween(dob, asOf);
+
+  const totalMonths =
+    age.years * 12 + age.months;
+
+  const totalWeeks =
+    (totalDays / 7).toFixed(2);
+
+
+  const nextBirthday =
+    getNextBirthday(dob, asOf);
+
+  const birthdayDays =
+    daysBetween(asOf, nextBirthday);
+
+
+  ageResult.textContent =
+    `${age.years} years, ${age.months} months, ${age.days} days`;
+
+  monthsResult.textContent =
+    `${totalMonths} months`;
+
+  weeksResult.textContent =
+    `${totalWeeks} weeks`;
+
+  daysResult.textContent =
+    `${totalDays.toLocaleString()} days`;
+
+  birthdayResult.textContent =
+    formatDate(nextBirthday);
+
+  birthdayDaysResult.textContent =
+    `${birthdayDays} days`;
+
+
+  results.hidden = false;
+  copyBtn.hidden = false;
+
+  results.classList.remove("result-pop");
+
+  void results.offsetWidth;
+
+  results.classList.add("result-pop");
+
+}
+
+
+function clearCalculator() {
+
+  dobInput.value = "";
+  asOfInput.value = "";
+
+  clearError();
+
+  results.hidden = true;
+  copyBtn.hidden = true;
+
+}
+
+
+async function copyResults() {
+
+  const text =
+`Age: ${ageResult.textContent}
+Total Months: ${monthsResult.textContent}
+Total Weeks: ${weeksResult.textContent}
+Total Days: ${daysResult.textContent}
+Next Birthday: ${birthdayResult.textContent}
+Days Until Birthday: ${birthdayDaysResult.textContent}`;
+
+  try {
+
+    await navigator.clipboard.writeText(text);
+
+    const originalText = copyBtn.textContent;
+
+    copyBtn.textContent = "Copied!";
+
+    setTimeout(() => {
+      copyBtn.textContent = originalText;
+    }, 1500);
+
+  } catch {
+
+    copyBtn.textContent = "Copy failed";
+
+    setTimeout(() => {
+      copyBtn.textContent = "Copy Results";
+    }, 1500);
+
+  }
+
+}
+
+
+calculateBtn.addEventListener(
+  "click",
+  calculate
+);
+
+clearBtn.addEventListener(
+  "click",
+  clearCalculator
+);
+
+copyBtn.addEventListener(
+  "click",
+  copyResults
+);
+
+
+dobInput.addEventListener(
+  "keydown",
+  function(event) {
+
+    if (event.key === "Enter") {
+      calculate();
+    }
+
+  }
+);
+
+
+asOfInput.addEventListener(
+  "keydown",
+  function(event) {
+
+    if (event.key === "Enter") {
+      calculate();
+    }
+
+  }
+);
+
+
+</script>
+
+</body>
+</html>
