@@ -834,3 +834,40 @@ a {
     scroll-behavior: auto !important;
   }
 }
+
+/* Enhanced interactive card effects */
+
+.calculator,
+.calculator-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.calculator:hover,
+.calculator-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+}
+
+.tool-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-7px) scale(1.015);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.10);
+}
+
+.tool-card h3 {
+  transition: transform 0.25s ease;
+}
+
+.tool-card:hover h3 {
+  transform: translateX(3px);
+}
+
+/* Button glow on hover */
+
+button:hover,
+.btn:hover {
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.18);
+}
