@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Working Days Calculator - Business Days Between Dates</title>
+
+  <meta name="description" content="Free working days calculator to count business days between two dates. Exclude weekends and holidays and choose your working week.">
+
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Umer Farooq Khan">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="canonical" href="https://umerfarooqkhan-seo.github.io/businessdaycalculate/working-days-calculator.html">
+
+  <meta property="og:title" content="Working Days Calculator">
+  <meta property="og:description" content="Calculate working days between two dates while excluding weekends and holidays.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://umerfarooqkhan-seo.github.io/businessdaycalculate/working-days-calculator.html">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Working Days Calculator">
+  <meta name="twitter:description" content="Calculate business days between two dates.">
+
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="stylesheet" href="style.css">
+
+
+  <!-- WebApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Working Days Calculator",
+    "url": "https://umerfarooqkhan-seo.github.io/businessdaycalculate/working-days-calculator.html",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "All",
+    "description": "A free calculator for counting working days between two dates while excluding weekends and holidays.",
+    "author": {
+      "@type": "Person",
+      "name": "Umer Farooq Khan"
+    }
+  }
+  </script>
+
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What are working days?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Working days are days that are normally available for work according to the selected working week. This calculator can exclude weekends and custom holidays."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the working days calculator work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enter a start date and end date, select your working week, optionally add holidays, and calculate the number of working days in the date range."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I exclude holidays?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Enter holiday dates in YYYY-MM-DD format, one date per line, and those dates will be excluded from the working-day count."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use a Monday to Saturday working week?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can choose Monday to Friday, Monday to Saturday, or create a custom working week."
+        }
+      }
+    ]
+  }
+  </script>
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+  <div class="container header-inner">
+
+    <a href="index.html" class="logo">
+      Business Day Calculate
+    </a>
+
+    <nav>
+      <a href="index.html">Calculator</a>
+      <a href="index.html#how-it-works">How It Works</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<main>
+
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="container">
+
+      <h1>Working Days Calculator</h1>
+
+      <p>
+        Calculate the number of working days between two dates.
+        Exclude weekends, holidays and choose your working week.
+      </p>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- CALCULATOR -->
+
+  <section class="calculator-section">
+
+    <div class="container">
+
+      <div class="calculator-card">
+
+
+        <!-- START DATE -->
+
+        <div class="form-group">
+
+          <label for="startDate">
+            Start Date
+          </label>
+
+          <input
+            type="date"
+            id="startDate"
+          >
+
+        </div>
+
+
+
+        <!-- END DATE -->
+
+        <div class="form-group">
+
+          <label for="endDate">
+            End Date
+          </label>
+
+          <input
+            type="date"
+            id="endDate"
+          >
+
+        </div>
+
+
+
+        <!-- WORKING WEEK -->
+
+        <div class="form-group">
+
+          <label for="workingWeek">
+            Working Week
+          </label>
+
+          <select id="workingWeek">
+
+            <option value="mon-fri">
+              Monday - Friday
+            </option>
+
+            <option value="mon-sat">
+              Monday - Saturday
+            </option>
+
+            <option value="custom">
+              Custom Working Week
+            </option>
+
+          </select>
+
+        </div>
+
+
+
+        <!-- CUSTOM DAYS -->
+
+        <div
+          id="customDays"
+          class="custom-days"
+          style="display:none;"
+        >
+
+          <p>
+            Select the days that count as working days:
+          </p>
+
+
+          <div class="checkbox-grid">
+
+            <label>
+              <input type="checkbox" value="1" checked>
+              Monday
+            </label>
+
+            <label>
+              <input type="checkbox" value="2" checked>
+              Tuesday
+            </label>
+
+            <label>
+              <input type="checkbox" value="3" checked>
+              Wednesday
+            </label>
+
+            <label>
+              <input type="checkbox" value="4" checked>
+              Thursday
+            </label>
+
+            <label>
+              <input type="checkbox" value="5" checked>
+              Friday
+            </label>
+
+            <label>
+              <input type="checkbox" value="6">
+              Saturday
+            </label>
+
+            <label>
+              <input type="checkbox" value="0">
+              Sunday
+            </label>
+
+          </div>
+
+        </div>
+
+
+
+        <!-- HOLIDAYS -->
+
+        <div class="form-group">
+
+          <label for="holidays">
+            Holidays
+          </label>
+
+          <textarea
+            id="holidays"
+            rows="5"
+            placeholder="Enter holiday dates, one per line&#10;Example:&#10;2026-12-25&#10;2026-12-26"
+          ></textarea>
+
+          <small>
+            Use YYYY-MM-DD format.
+          </small>
+
+        </div>
+
+
+
+        <!-- BUTTONS -->
+
+        <div class="button-group">
+
+          <button
+            type="button"
+            id="calculateBtn"
+            class="primary-btn"
+          >
+            Calculate Working Days
+          </button>
+
+
+          <button
+            type="button"
+            id="clearBtn"
+            class="secondary-btn"
+          >
+            Clear
+          </button>
+
+        </div>
+
+
+
+        <!-- ERROR -->
+
+        <div
+          id="errorMessage"
+          class="error-message"
+          role="alert"
+          aria-live="polite"
+        ></div>
+
+
+
+        <!-- RESULTS -->
+
+        <div
+          id="result"
+          class="result-card"
+          style="display:none;"
+        >
+
+
+          <div class="result-main">
+
+            <span class="result-label">
+              Working Days
+            </span>
+
+            <strong id="workingDays">
+              0
+            </strong>
+
+          </div>
+
+
+
+          <div class="result-details">
+
+
+            <div>
+
+              <span>
+                Calendar Days
+              </span>
+
+              <strong id="calendarDays">
+                0
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Weekend Days
+              </span>
+
+              <strong id="weekendDays">
+                0
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Holidays Excluded
+              </span>
+
+              <strong id="holidayDays">
+                0
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Working Week
+              </span>
+
+              <strong id="weekResult">
+                Monday - Friday
+              </strong>
+
+            </div>
+
+          </div>
+
+
+          <button
+            type="button"
+            id="copyBtn"
+            class="copy-btn"
+          >
+            Copy Results
+          </button>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- CONTENT -->
+
+  <section class="content-section">
+
+    <div class="container">
+
+
+      <h2>What Is a Working Days Calculator?</h2>
+
+      <p>
+        A working days calculator counts the days that are
+        considered working days between two dates. Unlike a
+        standard calendar-day calculation, it can exclude
+        weekends and public or company holidays.
+      </p>
+
+      <p>
+        This makes it useful for project planning, employee
+        schedules, delivery estimates, contracts, payroll
+        calculations and business deadlines.
+      </p>
+
+
+
+      <h2>How to Calculate Working Days</h2>
+
+      <ol>
+
+        <li>
+          Select your start date.
+        </li>
+
+        <li>
+          Select your end date.
+        </li>
+
+        <li>
+          Choose your working week.
+        </li>
+
+        <li>
+          Add holidays if required.
+        </li>
+
+        <li>
+          Click <strong>Calculate Working Days</strong>.
+        </li>
+
+      </ol>
+
+
+
+      <h2>Working Days vs Calendar Days</h2>
+
+      <p>
+        Calendar days include every day in a date range,
+        including Saturdays and Sundays. Working days only
+        include the days selected as working days.
+      </p>
+
+      <p>
+        For example, with a Monday to Friday working week,
+        Saturday and Sunday are excluded from the working-day
+        count.
+      </p>
+
+
+
+      <h2>Using Holidays</h2>
+
+      <p>
+        You can enter holidays that should not count as working
+        days. Enter each holiday using the YYYY-MM-DD format,
+        with one date on each line.
+      </p>
+
+      <p>
+        For example:
+      </p>
+
+      <ul>
+
+        <li>2026-12-25</li>
+
+        <li>2026-12-26</li>
+
+        <li>2027-01-01</li>
+
+      </ul>
+
+
+
+      <h2>Custom Working Weeks</h2>
+
+      <p>
+        Not every business follows a Monday to Friday schedule.
+        The custom working week option lets you choose exactly
+        which days should count as working days.
+      </p>
+
+
+
+      <h2>Common Uses</h2>
+
+      <ul>
+
+        <li>
+          Project and deadline planning
+        </li>
+
+        <li>
+          Employee scheduling
+        </li>
+
+        <li>
+          Delivery and processing estimates
+        </li>
+
+        <li>
+          Contract periods
+        </li>
+
+        <li>
+          Business planning
+        </li>
+
+        <li>
+          Payroll and working-time calculations
+        </li>
+
+      </ul>
+
+
+
+      <h2 id="faq">
+        Frequently Asked Questions
+      </h2>
+
+
+
+      <div class="faq">
+
+
+        <details>
+
+          <summary>
+            What are working days?
+          </summary>
+
+          <p>
+            Working days are days that count as normal workdays
+            according to your selected working-week schedule.
+          </p>
+
+        </details>
+
+
+
+        <details>
+
+          <summary>
+            How does the working days calculator work?
+          </summary>
+
+          <p>
+            Enter the start and end dates, choose your working
+            week and optionally add holidays. The calculator
+            counts the selected working days in the range.
+          </p>
+
+        </details>
+
+
+
+        <details>
+
+          <summary>
+            Can I exclude holidays?
+          </summary>
+
+          <p>
+            Yes. Enter your holiday dates in YYYY-MM-DD format,
+            one date per line.
+          </p>
+
+        </details>
+
+
+
+        <details>
+
+          <summary>
+            Can I use a Monday to Saturday working week?
+          </summary>
+
+          <p>
+            Yes. Select Monday to Saturday from the Working Week
+            menu.
+          </p>
+
+        </details>
+
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer class="site-footer">
+
+  <div class="container">
+
+    <div class="footer-links">
+
+      <a href="index.html">
+        Calculator
+      </a>
+
+      <a href="add-business-days.html">
+        Add Business Days
+      </a>
+
+      <a href="subtract-business-days.html">
+        Subtract Business Days
+      </a>
+
+      <a href="days-between-dates.html">
+        Days Between Dates
+      </a>
+
+      <a href="date-difference.html">
+        Date Difference
+      </a>
+
+      <a href="working-days-calculator.html">
+        Working Days
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a href="contact.html">
+        Contact
+      </a>
+
+      <a href="privacy.html">
+        Privacy Policy
+      </a>
+
+      <a href="terms.html">
+        Terms of Use
+      </a>
+
+    </div>
+
+
+    <p>
+      © 2026 Business Day Calculate. All rights reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+  const startDate =
+    document.getElementById("startDate");
+
+  const endDate =
+    document.getElementById("endDate");
+
+  const workingWeek =
+    document.getElementById("workingWeek");
+
+  const customDays =
+    document.getElementById("customDays");
+
+  const holidays =
+    document.getElementById("holidays");
+
+  const calculateBtn =
+    document.getElementById("calculateBtn");
+
+  const clearBtn =
+    document.getElementById("clearBtn");
+
+  const copyBtn =
+    document.getElementById("copyBtn");
+
+  const result =
+    document.getElementById("result");
+
+  const errorMessage =
+    document.getElementById("errorMessage");
+
+  const workingDays =
+    document.getElementById("workingDays");
+
+  const calendarDays =
+    document.getElementById("calendarDays");
+
+  const weekendDays =
+    document.getElementById("weekendDays");
+
+  const holidayDays =
+    document.getElementById("holidayDays");
+
+  const weekResult =
+    document.getElementById("weekResult");
+
+
+
+  function parseLocalDate(value) {
+
+    const parts =
+      value.split("-").map(Number);
+
+    return new Date(
+      parts[0],
+      parts[1] - 1,
+      parts[2]
+    );
+
+  }
+
+
+
+  function formatISO(date) {
+
+    const year =
+      date.getFullYear();
+
+    const month =
+      String(date.getMonth() + 1)
+        .padStart(2, "0");
+
+    const day =
+      String(date.getDate())
+        .padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+
+  }
+
+
+
+  function formatDate(date) {
+
+    return date.toLocaleDateString(
+      "en-US",
+      {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      }
+    );
+
+  }
+
+
+
+  function getToday() {
+
+    const today =
+      new Date();
+
+    return new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate()
+    );
+
+  }
+
+
+
+  function getHolidaySet() {
+
+    const set =
+      new Set();
+
+    const lines =
+      holidays.value
+        .split(/\r?\n/)
+        .map(line => line.trim())
+        .filter(Boolean);
+
+
+    for (const line of lines) {
+
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(line)) {
+
+        throw new Error(
+          `Invalid holiday date: ${line}`
+        );
+
+      }
+
+
+      const date =
+        parseLocalDate(line);
+
+
+      if (
+        Number.isNaN(date.getTime()) ||
+        formatISO(date) !== line
+      ) {
+
+        throw new Error(
+          `Invalid holiday date: ${line}`
+        );
+
+      }
+
+
+      set.add(line);
+
+    }
+
+
+    return set;
+
+  }
+
+
+
+  function getWorkingDays() {
+
+    const mode =
+      workingWeek.value;
+
+
+    if (mode === "mon-fri") {
+
+      return new Set([
+        1,
+        2,
+        3,
+        4,
+        5
+      ]);
+
+    }
+
+
+    if (mode === "mon-sat") {
+
+      return new Set([
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]);
+
+    }
+
+
+    const selected =
+      document.querySelectorAll(
+        '#customDays input[type="checkbox"]:checked'
+      );
+
+
+    return new Set(
+      Array.from(selected)
+        .map(input => Number(input.value))
+    );
+
+  }
+
+
+
+  function getWorkingWeekLabel() {
+
+    if (workingWeek.value === "mon-fri") {
+
+      return "Monday - Friday";
+
+    }
+
+
+    if (workingWeek.value === "mon-sat") {
+
+      return "Monday - Saturday";
+
+    }
+
+
+    const names = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ];
+
+
+    const selected =
+      Array.from(
+        document.querySelectorAll(
+          '#customDays input[type="checkbox"]:checked'
+        )
+      )
+      .map(input =>
+        names[Number(input.value)]
+      );
+
+
+    return selected.length
+      ? selected.join(", ")
+      : "No working days selected";
+
+  }
+
+
+
+  function calculate() {
+
+    errorMessage.textContent =
+      "";
+
+    result.style.display =
+      "none";
+
+
+    if (!startDate.value) {
+
+      errorMessage.textContent =
+        "Please select a start date.";
+
+      return;
+
+    }
+
+
+    if (!endDate.value) {
+
+      errorMessage.textContent =
+        "Please select an end date.";
+
+      return;
+
+    }
+
+
+    const start =
+      parseLocalDate(
+        startDate.value
+      );
+
+    const end =
+      parseLocalDate(
+        endDate.value
+      );
+
+
+    if (start > end) {
+
+      errorMessage.textContent =
+        "Please make sure the end date is on or after the start date.";
+
+      return;
+
+    }
+
+
+    let holidaySet;
+
+    try {
+
+      holidaySet =
+        getHolidaySet();
+
+    } catch (error) {
+
+      errorMessage.textContent =
+        error.message;
+
+      return;
+
+    }
+
+
+    const workingSet =
+      getWorkingDays();
+
+
+    if (workingSet.size === 0) {
+
+      errorMessage.textContent =
+        "Please select at least one working day.";
+
+      return;
+
+    }
+
+
+    const millisecondsPerDay =
+      24 * 60 * 60 * 1000;
+
+
+    const totalCalendarDays =
+      Math.round(
+        (end - start) /
+        millisecondsPerDay
+      ) + 1;
+
+
+    let workingCount = 0;
+
+    let weekendCount = 0;
+
+    let holidayCount = 0;
+
+
+    const current =
+      new Date(start);
+
+
+    while (current <= end) {
+
+      const dayOfWeek =
+        current.getDay();
+
+      const dateString =
+        formatISO(current);
+
+
+      const isHoliday =
+        holidaySet.has(dateString);
+
+
+      if (isHoliday) {
+
+        holidayCount++;
+
+      }
+
+
+      if (
+        workingSet.has(dayOfWeek) &&
+        !isHoliday
+      ) {
+
+        workingCount++;
+
+      } else if (
+        !workingSet.has(dayOfWeek)
+      ) {
+
+        weekendCount++;
+
+      }
+
+
+      current.setDate(
+        current.getDate() + 1
+      );
+
+    }
+
+
+    workingDays.textContent =
+      workingCount.toLocaleString();
+
+
+    calendarDays.textContent =
+      totalCalendarDays.toLocaleString();
+
+
+    weekendDays.textContent =
+      weekendCount.toLocaleString();
+
+
+    holidayDays.textContent =
+      holidayCount.toLocaleString();
+
+
+    weekResult.textContent =
+      getWorkingWeekLabel();
+
+
+    result.style.display =
+      "block";
+
+
+    result.classList.remove(
+      "result-show"
+    );
+
+
+    void result.offsetWidth;
+
+
+    result.classList.add(
+      "result-show"
+    );
+
+  }
+
+
+
+  function clearCalculator() {
+
+    const today =
+      getToday();
+
+
+    const future =
+      new Date(today);
+
+
+    future.setDate(
+      future.getDate() + 14
+    );
+
+
+    startDate.value =
+      formatISO(today);
+
+
+    endDate.value =
+      formatISO(future);
+
+
+    workingWeek.value =
+      "mon-fri";
+
+
+    holidays.value =
+      "";
+
+
+    customDays.style.display =
+      "none";
+
+
+    document.querySelectorAll(
+      '#customDays input[type="checkbox"]'
+    ).forEach(input => {
+
+      input.checked =
+        ["1", "2", "3", "4", "5"]
+          .includes(input.value);
+
+    });
+
+
+    errorMessage.textContent =
+      "";
+
+
+    result.style.display =
+      "none";
+
+  }
+
+
+
+  async function copyResult() {
+
+    const text =
+`Working Days Calculator Results
+Working Days: ${workingDays.textContent}
+Calendar Days: ${calendarDays.textContent}
+Weekend Days: ${weekendDays.textContent}
+Holidays Excluded: ${holidayDays.textContent}
+Working Week: ${weekResult.textContent}
+Start Date: ${formatDate(parseLocalDate(startDate.value))}
+End Date: ${formatDate(parseLocalDate(endDate.value))}`;
+
+
+    try {
+
+      await navigator.clipboard
+        .writeText(text);
+
+
+      const original =
+        copyBtn.textContent;
+
+
+      copyBtn.textContent =
+        "Copied!";
+
+
+      setTimeout(() => {
+
+        copyBtn.textContent =
+          original;
+
+      }, 1500);
+
+
+    } catch {
+
+      errorMessage.textContent =
+        "Unable to copy the results.";
+
+    }
+
+  }
+
+
+
+  workingWeek.addEventListener(
+    "change",
+    function () {
+
+      customDays.style.display =
+        this.value === "custom"
+          ? "block"
+          : "none";
+
+    }
+  );
+
+
+  calculateBtn.addEventListener(
+    "click",
+    calculate
+  );
+
+
+  clearBtn.addEventListener(
+    "click",
+    clearCalculator
+  );
+
+
+  copyBtn.addEventListener(
+    "click",
+    copyResult
+  );
+
+
+
+  /* Default dates */
+
+  const today =
+    getToday();
+
+
+  const future =
+    new Date(today);
+
+
+  future.setDate(
+    future.getDate() + 14
+  );
+
+
+  startDate.value =
+    formatISO(today);
+
+
+  endDate.value =
+    formatISO(future);
+
+});
+
+</script>
+
+
+</body>
+</html>
