@@ -3,32 +3,58 @@
 
   <url>
     <loc>https://umerfarooqkhan-seo.github.io/businessdaycalculate/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://umerfarooqkhan-seo.github.io/businessdaycalculate/add-business-days.html</loc>
+  </url>
+
+  <url>
+    <loc>https://umerfarooqkhan-seo.github.io/businessdaycalculate/subtract-business-days.html</loc>
+  </url>
+
+  <url>
+    <loc>https://umerfarooqkhan-seo.github.io/businessdaycalculate/days-between-dates.html</loc>
+  </url>
+
+  <url>
+    <loc>https://umerfarooqkhan-seo.github.io/businessdaycalculate/date-difference.html</loc>
+  </url>
+
+  <url>
+    <loc>https://umerfarooqkhan-seo.github.io/businessdaycalculate/working-days-calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://umerfarooqkhan-seo.github.io/businessdaycalculate/age-calculator.html</loc>
+  </url>
+
+  <url>
+    <loc>https://umerfarooqkhan-seo.github.io/businessdaycalculate/weeks-between-dates.html</loc>
+  </url>
+
+  <url>
+    <loc>https://umerfarooqkhan-seo.github.io/businessdaycalculate/months-between-dates.html</loc>
+  </url>
+
+  <url>
+    <loc>https://umerfarooqkhan-seo.github.io/businessdaycalculate/days-until-date.html</loc>
   </url>
 
   <url>
     <loc>https://umerfarooqkhan-seo.github.io/businessdaycalculate/about.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://umerfarooqkhan-seo.github.io/businessdaycalculate/contact.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://umerfarooqkhan-seo.github.io/businessdaycalculate/privacy.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://umerfarooqkhan-seo.github.io/businessdaycalculate/terms.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
   </url>
 
 </urlset>
