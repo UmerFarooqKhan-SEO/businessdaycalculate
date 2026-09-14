@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Months Between Dates Calculator - Calculate Months</title>
+
+  <meta name="description" content="Free months between dates calculator. Calculate complete months, remaining days, total days, and inclusive days between two dates.">
+
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <meta name="author" content="Umer Farooq Khan">
+
+  <link rel="canonical" href="https://umerfarooqkhan-seo.github.io/businessdaycalculate/months-between-dates.html">
+
+  <meta property="og:title" content="Months Between Dates Calculator">
+  <meta property="og:description" content="Calculate complete months, remaining days, and total days between two dates.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://umerfarooqkhan-seo.github.io/businessdaycalculate/months-between-dates.html">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Months Between Dates Calculator">
+  <meta name="twitter:description" content="Calculate the number of months and days between two dates.">
+
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Months Between Dates Calculator",
+    "url": "https://umerfarooqkhan-seo.github.io/businessdaycalculate/months-between-dates.html",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Free calculator for calculating complete months, remaining days, and total days between two dates."
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How many months are between two dates?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enter the start and end dates into the calculator. It calculates complete calendar months and any remaining days between the dates."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this calculator use calendar months?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The calculator uses calendar months rather than dividing the number of days by an average month length."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between complete months and total days?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Complete months measure calendar months between the dates, while total days measures the exact number of elapsed calendar days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are the start and end dates included?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The main month calculation measures the elapsed time between the dates. The calculator also shows inclusive days, which counts both the start and end date."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="index.html" class="logo">
+      Business Day Calculate
+    </a>
+
+    <nav>
+      <a href="index.html">Calculator</a>
+      <a href="days-between-dates.html">Days Between Dates</a>
+      <a href="age-calculator.html">Age Calculator</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+  </div>
+</header>
+
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+
+      <h1>Months Between Dates Calculator</h1>
+
+      <p class="hero-text">
+        Calculate the complete months, remaining days, and total days between two dates.
+      </p>
+
+    </div>
+  </section>
+
+
+  <section class="calculator-section">
+    <div class="container">
+
+      <div class="calculator-card">
+
+        <div class="input-group">
+
+          <label for="startDate">
+            Start Date
+          </label>
+
+          <input type="date" id="startDate">
+
+        </div>
+
+
+        <div class="input-group">
+
+          <label for="endDate">
+            End Date
+          </label>
+
+          <input type="date" id="endDate">
+
+        </div>
+
+
+        <div class="button-row">
+
+          <button id="calculateBtn" class="primary-btn">
+            Calculate Months
+          </button>
+
+          <button id="clearBtn" class="secondary-btn">
+            Clear
+          </button>
+
+        </div>
+
+
+        <div id="errorMessage" class="error-message" style="display:none;"></div>
+
+
+        <div id="results" class="results-card" style="display:none;">
+
+          <div class="result-grid">
+
+            <div class="result-item">
+              <span class="result-label">
+                Complete Months
+              </span>
+
+              <strong id="completeMonths">
+                0
+              </strong>
+            </div>
+
+
+            <div class="result-item">
+              <span class="result-label">
+                Remaining Days
+              </span>
+
+              <strong id="remainingDays">
+                0
+              </strong>
+            </div>
+
+
+            <div class="result-item">
+              <span class="result-label">
+                Total Days
+              </span>
+
+              <strong id="totalDays">
+                0
+              </strong>
+            </div>
+
+
+            <div class="result-item">
+              <span class="result-label">
+                Inclusive Days
+              </span>
+
+              <strong id="inclusiveDays">
+                0
+              </strong>
+            </div>
+
+
+            <div class="result-item">
+              <span class="result-label">
+                Start Date
+              </span>
+
+              <strong id="resultStartDate">
+                -
+              </strong>
+            </div>
+
+
+            <div class="result-item">
+              <span class="result-label">
+                End Date
+              </span>
+
+              <strong id="resultEndDate">
+                -
+              </strong>
+            </div>
+
+          </div>
+
+
+          <button id="copyBtn" class="copy-btn">
+            Copy Results
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="content-section">
+
+    <div class="container content-container">
+
+      <h2>What Is a Months Between Dates Calculator?</h2>
+
+      <p>
+        A months between dates calculator helps you determine how many complete calendar months and remaining days exist between two dates.
+      </p>
+
+      <p>
+        Unlike calculations that divide the number of days by an average month length, this calculator works with actual calendar months.
+      </p>
+
+
+      <h2>How to Calculate Months Between Two Dates</h2>
+
+      <p>
+        Enter your starting date and ending date, then select Calculate Months. The calculator determines the complete calendar months first and then calculates any remaining days.
+      </p>
+
+      <p>
+        For example, from January 15, 2026 to September 15, 2026, there are 8 complete months and 0 remaining days.
+      </p>
+
+
+      <h2>Complete Months vs Total Days</h2>
+
+      <p>
+        Complete months and total days are different ways of measuring the same date range.
+      </p>
+
+      <ul>
+        <li><strong>Complete Months:</strong> Full calendar months between the dates.</li>
+        <li><strong>Remaining Days:</strong> Days left after complete months are counted.</li>
+        <li><strong>Total Days:</strong> Exact number of elapsed calendar days.</li>
+        <li><strong>Inclusive Days:</strong> Total days when both the start and end dates are counted.</li>
+      </ul>
+
+
+      <h2>Why Use This Calculator?</h2>
+
+      <p>
+        Calculating months manually can become confusing because months have different numbers of days. This calculator provides a simple way to measure calendar periods for planning, contracts, subscriptions, projects, payments, and other date-related tasks.
+      </p>
+
+
+      <section id="faq">
+
+        <h2>Frequently Asked Questions</h2>
+
+
+        <details>
+          <summary>
+            How many months are between two dates?
+          </summary>
+
+          <p>
+            Enter the two dates and the calculator will show the number of complete calendar months together with any remaining days.
+          </p>
+        </details>
+
+
+        <details>
+          <summary>
+            Does this calculator use calendar months?
+          </summary>
+
+          <p>
+            Yes. It calculates calendar months instead of estimating months by dividing total days by an average number of days.
+          </p>
+        </details>
+
+
+        <details>
+          <summary>
+            What are complete months?
+          </summary>
+
+          <p>
+            Complete months are the full calendar months that fit between the start and end dates.
+          </p>
+        </details>
+
+
+        <details>
+          <summary>
+            What are remaining days?
+          </summary>
+
+          <p>
+            Remaining days are the days left after complete calendar months have been counted.
+          </p>
+        </details>
+
+
+        <details>
+          <summary>
+            Does inclusive days include both dates?
+          </summary>
+
+          <p>
+            Yes. Inclusive days count both the starting date and the ending date.
+          </p>
+        </details>
+
+
+      </section>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="container">
+
+    <div class="footer-links">
+
+      <a href="index.html">Business Day Calculator</a>
+
+      <a href="add-business-days.html">Add Business Days</a>
+
+      <a href="subtract-business-days.html">Subtract Business Days</a>
+
+      <a href="days-between-dates.html">Days Between Dates</a>
+
+      <a href="date-difference.html">Date Difference</a>
+
+      <a href="working-days-calculator.html">Working Days</a>
+
+      <a href="age-calculator.html">Age Calculator</a>
+
+      <a href="weeks-between-dates.html">Weeks Between Dates</a>
+
+      <a href="months-between-dates.html">Months Between Dates</a>
+
+      <a href="about.html">About</a>
+
+      <a href="contact.html">Contact</a>
+
+      <a href="privacy.html">Privacy Policy</a>
+
+      <a href="terms.html">Terms of Use</a>
+
+    </div>
+
+    <p>
+      © 2026 Business Day Calculate. All rights reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+function parseLocalDate(value) {
+
+  if (!value) return null;
+
+  const parts = value.split("-").map(Number);
+
+  if (parts.length !== 3 || parts.some(Number.isNaN)) {
+    return null;
+  }
+
+  const [year, month, day] = parts;
+
+  const date = new Date(year, month - 1, day);
+
+  if (
+    date.getFullYear() !== year ||
+    date.getMonth() !== month - 1 ||
+    date.getDate() !== day
+  ) {
+    return null;
+  }
+
+  return date;
+}
+
+
+function formatDate(date) {
+
+  return date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+
+}
+
+
+function differenceInDays(start, end) {
+
+  const startUTC = Date.UTC(
+    start.getFullYear(),
+    start.getMonth(),
+    start.getDate()
+  );
+
+  const endUTC = Date.UTC(
+    end.getFullYear(),
+    end.getMonth(),
+    end.getDate()
+  );
+
+  return Math.round(
+    (endUTC - startUTC) / 86400000
+  );
+
+}
+
+
+function daysInPreviousMonth(year, month) {
+
+  return new Date(
+    year,
+    month,
+    0
+  ).getDate();
+
+}
+
+
+function calculateMonthDifference(start, end) {
+
+  let years =
+    end.getFullYear() -
+    start.getFullYear();
+
+  let months =
+    end.getMonth() -
+    start.getMonth();
+
+  let days =
+    end.getDate() -
+    start.getDate();
+
+
+  if (days < 0) {
+
+    months--;
+
+    days += daysInPreviousMonth(
+      end.getFullYear(),
+      end.getMonth()
+    );
+
+  }
+
+
+  if (months < 0) {
+
+    years--;
+
+    months += 12;
+
+  }
+
+
+  const completeMonths =
+    (years * 12) + months;
+
+
+  return {
+    completeMonths,
+    remainingDays: days
+  };
+
+}
+
+
+const startDateInput =
+  document.getElementById("startDate");
+
+const endDateInput =
+  document.getElementById("endDate");
+
+const calculateBtn =
+  document.getElementById("calculateBtn");
+
+const clearBtn =
+  document.getElementById("clearBtn");
+
+const results =
+  document.getElementById("results");
+
+const errorMessage =
+  document.getElementById("errorMessage");
+
+const completeMonths =
+  document.getElementById("completeMonths");
+
+const remainingDays =
+  document.getElementById("remainingDays");
+
+const totalDays =
+  document.getElementById("totalDays");
+
+const inclusiveDays =
+  document.getElementById("inclusiveDays");
+
+const resultStartDate =
+  document.getElementById("resultStartDate");
+
+const resultEndDate =
+  document.getElementById("resultEndDate");
+
+const copyBtn =
+  document.getElementById("copyBtn");
+
+
+function showError(message) {
+
+  errorMessage.textContent = message;
+
+  errorMessage.style.display = "block";
+
+  results.style.display = "none";
+
+}
+
+
+function hideError() {
+
+  errorMessage.textContent = "";
+
+  errorMessage.style.display = "none";
+
+}
+
+
+calculateBtn.addEventListener("click", function () {
+
+  hideError();
+
+  const start =
+    parseLocalDate(startDateInput.value);
+
+  const end =
+    parseLocalDate(endDateInput.value);
+
+
+  if (!start || !end) {
+
+    showError(
+      "Please select both a start date and an end date."
+    );
+
+    return;
+
+  }
+
+
+  if (start > end) {
+
+    showError(
+      "The start date must be before or equal to the end date."
+    );
+
+    return;
+
+  }
+
+
+  const difference =
+    calculateMonthDifference(start, end);
+
+
+  const days =
+    differenceInDays(start, end);
+
+
+  completeMonths.textContent =
+    difference.completeMonths;
+
+  remainingDays.textContent =
+    difference.remainingDays;
+
+  totalDays.textContent =
+    days;
+
+  inclusiveDays.textContent =
+    days + 1;
+
+  resultStartDate.textContent =
+    formatDate(start);
+
+  resultEndDate.textContent =
+    formatDate(end);
+
+
+  results.style.display = "block";
+
+
+  results.classList.remove("result-pop");
+
+  void results.offsetWidth;
+
+  results.classList.add("result-pop");
+
+});
+
+
+clearBtn.addEventListener("click", function () {
+
+  startDateInput.value = "";
+
+  endDateInput.value = "";
+
+  hideError();
+
+  results.style.display = "none";
+
+});
+
+
+copyBtn.addEventListener("click", async function () {
+
+  const text =
+`Months Between Dates
+
+Start Date: ${resultStartDate.textContent}
+End Date: ${resultEndDate.textContent}
+
+Complete Months: ${completeMonths.textContent}
+Remaining Days: ${remainingDays.textContent}
+Total Days: ${totalDays.textContent}
+Inclusive Days: ${inclusiveDays.textContent}`;
+
+
+  try {
+
+    await navigator.clipboard.writeText(text);
+
+    const original =
+      copyBtn.textContent;
+
+    copyBtn.textContent =
+      "Copied!";
+
+    setTimeout(function () {
+
+      copyBtn.textContent =
+        original;
+
+    }, 1500);
+
+  } catch (error) {
+
+    copyBtn.textContent =
+      "Copy failed";
+
+    setTimeout(function () {
+
+      copyBtn.textContent =
+        "Copy Results";
+
+    }, 1500);
+
+  }
+
+});
+
+
+</script>
+
+</body>
+</html>
