@@ -302,3 +302,47 @@ h1 {
 
 .calculator-card:hover {
   box-sha
+```css
+/* Result animation */
+.results-animate {
+  animation: resultsReveal 0.45s ease both;
+}
+
+.number-pop {
+  animation: numberPop 0.35s ease both;
+}
+
+@keyframes resultsReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes numberPop {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+
+  70% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .results-animate,
+  .number-pop {
+    animation: none;
+  }
+}
