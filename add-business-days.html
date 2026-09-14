@@ -543,15 +543,14 @@
   const errorMessage = document.getElementById("errorMessage");
 
 
-  function formatDate(date) {
+  function parseLocalDate(value) {
+    const parts = value.split("-");
 
-    return date.toLocaleDateString("en-US", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric"
-    });
-
+    return new Date(
+      Number(parts[0]),
+      Number(parts[1]) - 1,
+      Number(parts[2])
+    );
   }
 
 
@@ -568,7 +567,17 @@
     ).padStart(2, "0");
 
     return `${year}-${month}-${day}`;
+  }
 
+
+  function formatDate(date) {
+
+    return date.toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    });
   }
 
 
@@ -577,31 +586,35 @@
     const day = date.getDay();
 
     if (workingWeek.value === "mon-fri") {
-
       return day >= 1 && day <= 5;
-
     }
 
     if (workingWeek.value === "mon-sat") {
-
       return day >= 1 && day <= 6;
-
     }
 
     return false;
-
   }
 
 
-  function getHolidays() {
+  function getHolidaySet() {
+
+    const holidaySet = new Set();
 
     const lines = holidays.value
       .split(/\r?\n/)
-      .map(item => item.trim())
+      .map(line => line.trim())
       .filter(Boolean);
 
-    return new Set(lines);
+    lines.forEach(date => {
 
+      if (/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        holidaySet.add(date);
+      }
+
+    });
+
+    return holidaySet;
   }
 
 
@@ -611,7 +624,6 @@
     errorMessage.classList.add("show");
 
     resultBox.classList.remove("show");
-
   }
 
 
@@ -619,7 +631,6 @@
 
     errorMessage.textContent = "";
     errorMessage.classList.remove("show");
-
   }
 
 
@@ -636,9 +647,11 @@
 
     if (!startValue) {
 
-      showError("Please select a start date.");
-      return;
+      showError(
+        "Please select a start date."
+      );
 
+      return;
     }
 
 
@@ -652,15 +665,12 @@
       );
 
       return;
-
     }
 
 
-    const holidaySet = getHolidays();
+    const holidaySet = getHolidaySet();
 
-    let currentDate = new Date(
-      startValue + "T00:00:00"
-    );
+    let currentDate = parseLocalDate(startValue);
 
     let remaining = daysToAdd;
 
@@ -670,31 +680,35 @@
 
     while (remaining > 0) {
 
+      // Move forward exactly one calendar day.
       currentDate.setDate(
         currentDate.getDate() + 1
       );
 
 
+      const currentISO =
+        formatISO(currentDate);
+
+
+      // Skip weekends first.
       if (!isWorkingDay(currentDate)) {
 
         skippedWeekends++;
-        continue;
 
+        continue;
       }
 
 
-      if (
-        holidaySet.has(
-          formatISO(currentDate)
-        )
-      ) {
+      // Skip holidays.
+      if (holidaySet.has(currentISO)) {
 
         skippedHolidays++;
-        continue;
 
+        continue;
       }
 
 
+      // Count valid business day.
       remaining--;
 
     }
@@ -705,15 +719,19 @@
 
 
     resultDetails.innerHTML = `
-      <strong>${daysToAdd}</strong> business day${daysToAdd === 1 ? "" : "s"}
+      <strong>${daysToAdd}</strong>
+      business day${daysToAdd === 1 ? "" : "s"}
       added from
-      <strong>${formatDate(new Date(startValue + "T00:00:00"))}</strong>.
+      <strong>${formatDate(parseLocalDate(startValue))}</strong>.
       <br>
-      Final date: <strong>${formatISO(currentDate)}</strong>
+      Final date:
+      <strong>${formatISO(currentDate)}</strong>
       <br>
-      Weekend days skipped: <strong>${skippedWeekends}</strong>
+      Weekend days skipped:
+      <strong>${skippedWeekends}</strong>
       <br>
-      Holiday dates skipped: <strong>${skippedHolidays}</strong>
+      Holiday dates skipped:
+      <strong>${skippedHolidays}</strong>
     `;
 
 
@@ -728,9 +746,8 @@
 
   function clearAll() {
 
-    const today = new Date();
-
-    startDate.value = formatISO(today);
+    startDate.value =
+      formatISO(new Date());
 
     businessDays.value = 10;
 
@@ -741,7 +758,6 @@
     clearError();
 
     resultBox.classList.remove("show");
-
   }
 
 
@@ -793,6 +809,7 @@
   );
 
 
+  // Set today's date when the page loads.
   startDate.value =
     formatISO(new Date());
 
