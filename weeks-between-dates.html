@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Weeks Between Dates Calculator - Calculate Weeks</title>
+
+  <meta name="description"
+        content="Free weeks between dates calculator. Calculate the exact number of weeks and days between two dates, including total days and calendar weeks.">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Umer Farooq Khan">
+
+  <link rel="canonical"
+        href="https://umerfarooqkhan-seo.github.io/businessdaycalculate/weeks-between-dates.html">
+
+  <meta property="og:title" content="Weeks Between Dates Calculator">
+  <meta property="og:description"
+        content="Calculate the number of weeks and days between two dates.">
+  <meta property="og:type" content="website">
+  <meta property="og:url"
+        content="https://umerfarooqkhan-seo.github.io/businessdaycalculate/weeks-between-dates.html">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Weeks Between Dates Calculator">
+  <meta name="twitter:description"
+        content="Calculate weeks and days between two dates.">
+
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Weeks Between Dates Calculator",
+    "url": "https://umerfarooqkhan-seo.github.io/businessdaycalculate/weeks-between-dates.html",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "description": "Free calculator for finding the number of weeks and days between two dates.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How many weeks are between two dates?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enter the start and end dates to calculate the total number of complete weeks and remaining days between them."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the calculator include the start date?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The standard calculation measures the elapsed time between the two dates. An inclusive calendar day count is also provided."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I calculate weeks between dates in the past?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can enter any valid start and end dates."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many days are in a week?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "One week contains seven calendar days."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+
+    <a href="index.html" class="logo">
+      Business Day Calculate
+    </a>
+
+    <nav>
+      <a href="index.html">Calculator</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+  </div>
+</header>
+
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+
+      <h1>Weeks Between Dates Calculator</h1>
+
+      <p class="hero-text">
+        Calculate exactly how many weeks and days are between two dates,
+        including the total number of calendar days.
+      </p>
+
+    </div>
+  </section>
+
+
+  <section class="calculator-section">
+
+    <div class="container">
+
+      <div class="calculator-card">
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="date" id="startDate">
+          </div>
+
+          <div class="form-group">
+            <label for="endDate">End Date</label>
+            <input type="date" id="endDate">
+          </div>
+
+        </div>
+
+
+        <div class="button-row">
+
+          <button id="calculateBtn" class="primary-btn">
+            Calculate Weeks
+          </button>
+
+          <button id="clearBtn" class="secondary-btn">
+            Clear
+          </button>
+
+        </div>
+
+
+        <div id="errorMessage" class="error-message" hidden></div>
+
+
+        <div id="results" class="results-grid" hidden>
+
+          <div class="result-card">
+            <span class="result-label">Complete Weeks</span>
+            <strong id="weeksResult">-</strong>
+          </div>
+
+          <div class="result-card">
+            <span class="result-label">Remaining Days</span>
+            <strong id="remainingDaysResult">-</strong>
+          </div>
+
+          <div class="result-card">
+            <span class="result-label">Total Days</span>
+            <strong id="daysResult">-</strong>
+          </div>
+
+          <div class="result-card">
+            <span class="result-label">Total Weeks</span>
+            <strong id="decimalWeeksResult">-</strong>
+          </div>
+
+          <div class="result-card">
+            <span class="result-label">Inclusive Days</span>
+            <strong id="inclusiveDaysResult">-</strong>
+          </div>
+
+          <div class="result-card">
+            <span class="result-label">Start Date</span>
+            <strong id="startResult">-</strong>
+          </div>
+
+          <div class="result-card">
+            <span class="result-label">End Date</span>
+            <strong id="endResult">-</strong>
+          </div>
+
+        </div>
+
+
+        <button id="copyBtn" class="copy-btn" hidden>
+          Copy Results
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <section id="how-it-works" class="content-section">
+
+    <div class="container">
+
+      <h2>How Many Weeks Are Between Two Dates?</h2>
+
+      <p>
+        To calculate the weeks between two dates, first find the total
+        number of calendar days between the dates. Since one week contains
+        seven days, divide the total days by seven.
+      </p>
+
+      <p>
+        This calculator makes the calculation easier by showing both
+        complete weeks and any remaining days.
+      </p>
+
+
+      <h2>How the Weeks Calculator Works</h2>
+
+      <p>
+        Enter a start date and an end date. The calculator calculates the
+        elapsed calendar days and divides them into complete seven-day
+        weeks plus any remaining days.
+      </p>
+
+      <p>
+        For example, if two dates are 16 days apart, the result is
+        2 complete weeks and 2 remaining days.
+      </p>
+
+
+      <h2>Weeks vs Calendar Days</h2>
+
+      <p>
+        Calendar days count individual days, while weeks group those days
+        into periods of seven. This can make longer date ranges easier to
+        understand.
+      </p>
+
+
+      <h2>What Is an Inclusive Day Count?</h2>
+
+      <p>
+        The standard date difference measures elapsed time between the
+        dates. An inclusive count includes both the start date and the
+        end date, so it is one day greater when both dates are valid.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <section id="faq" class="faq-section">
+
+    <div class="container">
+
+      <h2>Frequently Asked Questions</h2>
+
+      <details>
+        <summary>How many weeks are between two dates?</summary>
+        <p>
+          Enter the two dates and the calculator will show complete weeks,
+          remaining days and total calendar days.
+        </p>
+      </details>
+
+      <details>
+        <summary>Does the calculator include the start date?</summary>
+        <p>
+          The main result measures elapsed time between the dates.
+          An inclusive day count is also shown separately.
+        </p>
+      </details>
+
+      <details>
+        <summary>Can I calculate weeks between dates in the past?</summary>
+        <p>
+          Yes. Any valid start and end dates can be entered.
+        </p>
+      </details>
+
+      <details>
+        <summary>How many days are in a week?</summary>
+        <p>
+          One week contains seven calendar days.
+        </p>
+      </details>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+  <div class="container">
+
+    <div class="footer-links">
+
+      <a href="index.html">Calculator</a>
+      <a href="add-business-days.html">Add Business Days</a>
+      <a href="subtract-business-days.html">Subtract Business Days</a>
+      <a href="days-between-dates.html">Days Between Dates</a>
+      <a href="date-difference.html">Date Difference</a>
+      <a href="working-days-calculator.html">Working Days</a>
+      <a href="age-calculator.html">Age Calculator</a>
+      <a href="weeks-between-dates.html">Weeks Between Dates</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+    </div>
+
+    <p>
+      © 2026 Business Day Calculate. All rights reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+const startDateInput = document.getElementById("startDate");
+const endDateInput = document.getElementById("endDate");
+
+const calculateBtn = document.getElementById("calculateBtn");
+const clearBtn = document.getElementById("clearBtn");
+const copyBtn = document.getElementById("copyBtn");
+
+const results = document.getElementById("results");
+const errorMessage = document.getElementById("errorMessage");
+
+const weeksResult = document.getElementById("weeksResult");
+const remainingDaysResult =
+  document.getElementById("remainingDaysResult");
+
+const daysResult =
+  document.getElementById("daysResult");
+
+const decimalWeeksResult =
+  document.getElementById("decimalWeeksResult");
+
+const inclusiveDaysResult =
+  document.getElementById("inclusiveDaysResult");
+
+const startResult =
+  document.getElementById("startResult");
+
+const endResult =
+  document.getElementById("endResult");
+
+
+function parseLocalDate(value) {
+
+  const parts = value.split("-");
+
+  if (parts.length !== 3) {
+    return null;
+  }
+
+  const year = Number(parts[0]);
+  const month = Number(parts[1]) - 1;
+  const day = Number(parts[2]);
+
+  const date = new Date(year, month, day);
+
+  if (
+    date.getFullYear() !== year ||
+    date.getMonth() !== month ||
+    date.getDate() !== day
+  ) {
+    return null;
+  }
+
+  date.setHours(0, 0, 0, 0);
+
+  return date;
+}
+
+
+function formatDate(date) {
+
+  return date.toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+
+}
+
+
+function daysBetween(start, end) {
+
+  const millisecondsPerDay =
+    24 * 60 * 60 * 1000;
+
+  return Math.round(
+    (end.getTime() - start.getTime()) /
+    millisecondsPerDay
+  );
+
+}
+
+
+function showError(message) {
+
+  errorMessage.textContent = message;
+  errorMessage.hidden = false;
+
+  results.hidden = true;
+  copyBtn.hidden = true;
+
+}
+
+
+function clearError() {
+
+  errorMessage.textContent = "";
+  errorMessage.hidden = true;
+
+}
+
+
+function calculate() {
+
+  clearError();
+
+  const start =
+    parseLocalDate(startDateInput.value);
+
+  const end =
+    parseLocalDate(endDateInput.value);
+
+
+  if (!start || !end) {
+
+    showError(
+      "Please enter both a valid start date and end date."
+    );
+
+    return;
+
+  }
+
+
+  if (start > end) {
+
+    showError(
+      "Start date cannot be after the end date."
+    );
+
+    return;
+
+  }
+
+
+  const totalDays =
+    daysBetween(start, end);
+
+  const completeWeeks =
+    Math.floor(totalDays / 7);
+
+  const remainingDays =
+    totalDays % 7;
+
+  const decimalWeeks =
+    (totalDays / 7).toFixed(2);
+
+  const inclusiveDays =
+    totalDays + 1;
+
+
+  weeksResult.textContent =
+    `${completeWeeks} weeks`;
+
+  remainingDaysResult.textContent =
+    `${remainingDays} days`;
+
+  daysResult.textContent =
+    `${totalDays.toLocaleString()} days`;
+
+  decimalWeeksResult.textContent =
+    `${decimalWeeks} weeks`;
+
+  inclusiveDaysResult.textContent =
+    `${inclusiveDays.toLocaleString()} days`;
+
+  startResult.textContent =
+    formatDate(start);
+
+  endResult.textContent =
+    formatDate(end);
+
+
+  results.hidden = false;
+  copyBtn.hidden = false;
+
+  results.classList.remove("result-pop");
+
+  void results.offsetWidth;
+
+  results.classList.add("result-pop");
+
+}
+
+
+function clearCalculator() {
+
+  startDateInput.value = "";
+  endDateInput.value = "";
+
+  clearError();
+
+  results.hidden = true;
+  copyBtn.hidden = true;
+
+}
+
+
+async function copyResults() {
+
+  const text =
+`Complete Weeks: ${weeksResult.textContent}
+Remaining Days: ${remainingDaysResult.textContent}
+Total Days: ${daysResult.textContent}
+Total Weeks: ${decimalWeeksResult.textContent}
+Inclusive Days: ${inclusiveDaysResult.textContent}
+Start Date: ${startResult.textContent}
+End Date: ${endResult.textContent}`;
+
+  try {
+
+    await navigator.clipboard.writeText(text);
+
+    const originalText =
+      copyBtn.textContent;
+
+    copyBtn.textContent = "Copied!";
+
+    setTimeout(() => {
+      copyBtn.textContent = originalText;
+    }, 1500);
+
+  } catch {
+
+    copyBtn.textContent = "Copy failed";
+
+    setTimeout(() => {
+      copyBtn.textContent = "Copy Results";
+    }, 1500);
+
+  }
+
+}
+
+
+calculateBtn.addEventListener(
+  "click",
+  calculate
+);
+
+clearBtn.addEventListener(
+  "click",
+  clearCalculator
+);
+
+copyBtn.addEventListener(
+  "click",
+  copyResults
+);
+
+
+startDateInput.addEventListener(
+  "keydown",
+  function(event) {
+
+    if (event.key === "Enter") {
+      calculate();
+    }
+
+  }
+);
+
+
+endDateInput.addEventListener(
+  "keydown",
+  function(event) {
+
+    if (event.key === "Enter") {
+      calculate();
+    }
+
+  }
+);
+
+</script>
+
+</body>
+</html>
